@@ -7,48 +7,31 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #90c7f8;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashcards.FirstController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashcards.FirstController">
     <children>
-        <AnchorPane prefHeight="150.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
-            <children>
-                <Label alignment="TOP_CENTER" layoutX="62.0" layoutY="28.0" text="FlashCards" textAlignment="CENTER">
-                    <font>
-                        <Font name="Sitka Small Bold" size="80.0" />
-                    </font>
-                    <textFill>
-                        <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.45801525625563755" startX="1.0" startY="1.0">
-                            <stops>
-                                <Stop>
-                                    <color>
-                                        <Color red="0.13725490868091583" blue="0.686274528503418" />
-                                    </color>
-                                </Stop>
-                                <Stop offset="0.007633587786259542">
-                                    <color>
-                                        <Color red="0.13725490868091583" blue="0.686274528503418" />
-                                    </color>
-                                </Stop>
-                                <Stop offset="0.4573094217295828">
-                                    <color>
-                                        <Color red="0.33725491166114807" green="0.5803921818733215" blue="0.7921568751335144" />
-                                    </color>
-                                </Stop>
-                                <Stop offset="0.9961832061068702">
-                                    <color>
-                                        <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
-                                    </color>
-                                </Stop>
-                                <Stop offset="1.0">
-                                    <color>
-                                        <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
-                                    </color>
-                                </Stop>
-                            </stops>
-                        </LinearGradient>
-                    </textFill>
-                </Label>
-            </children>
-        </AnchorPane>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" layoutY="1.0" stroke="#090000" strokeType="INSIDE" strokeWidth="0.0" width="600.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.9803921580314636" green="0.9803921580314636" blue="0.9803921580314636" />
+                            </color>
+                        </Stop>
+                        <Stop offset="0.007633587786259542">
+                            <color>
+                                <Color red="0.9803921580314636" green="0.9803921580314636" blue="0.9803921580314636" />
+                            </color>
+                        </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
+                     </color>
+                  </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
         <Button alignment="CENTER" layoutX="212.0" layoutY="231.0" mnemonicParsing="false" onAction="#showWindow" prefHeight="120.0" prefWidth="175.0" style="-fx-background-color: #fafafa;" text="Линейная&#10;алгебра и&#10;аналитическая&#10;геометрия" textAlignment="CENTER" textFill="#2300af">
             <font>
                 <Font name="Sitka Small Bold Italic" size="15.0" />
@@ -63,29 +46,31 @@
                 <Font name="Sitka Small Bold Italic" size="15.0" />
             </font>
         </Button>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="94.0" layoutY="125.0" stroke="#090000" strokeType="INSIDE" strokeWidth="0.0" width="600.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="0.42366410029753465" startX="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.9803921580314636" green="0.9803921580314636" blue="0.9803921580314636" />
-                            </color>
-                        </Stop>
-                        <Stop offset="0.007633587786259542">
-                            <color>
-                                <Color red="0.9803921580314636" green="0.9803921580314636" blue="0.9803921580314636" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
+      <Text layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlashCards" textAlignment="CENTER" wrappingWidth="600.0">
+         <font>
+            <Font name="Sitka Small Bold" size="80.0" />
+         </font>
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.4045800744122221" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.13725490868091583" blue="0.686274528503418" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4687022900763359">
+                     <color>
+                        <Color red="0.33725491166114807" green="0.5803921818733215" blue="0.7921568751335144" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Text>
     </children>
     <cursor>
         <Cursor fx:constant="DEFAULT" />
