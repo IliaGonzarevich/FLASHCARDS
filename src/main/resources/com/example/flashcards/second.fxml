@@ -90,7 +90,6 @@
                     </fill>
                 </Text>
             </AnchorPane>
-            ​
             <VBox fx:id="hideVB" layoutX="22.0" layoutY="-4.0" prefHeight="485.0" prefWidth="307.0" style="-fx-border-color: red; -fx-border-width: 0; -fx-border-radius: 20; -fx-background-radius: 15;" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0">
                 <AnchorPane prefHeight="432.0" prefWidth="306.0" style="-fx-background-color: white; -fx-background-radius: 15 15 0 0; -fx-border-radius: 15 15 0 0; -fx-border-width: 1 1 0 1; -fx-border-color: grey;">
                     <Label fx:id="lblShow" alignment="CENTER" layoutX="99.0" layoutY="216.0" prefHeight="71.0" prefWidth="108.0" style="-fx-background-color: #dddddd; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: red;" text="Показать&#10;   ответ">
@@ -108,7 +107,6 @@
                 <HBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 0 0 20 20; -fx-border-radius: 20; -fx-background-color: white;">
                     <Label fx:id="lblY" onMouseEntered="#lblYOnEntered" onMouseExited="#lblYOnExited" prefHeight="51.0" prefWidth="154.0" style="-fx-border-width: 1 1 1 1; -fx-border-color: grey; -fx-background-color: white; -fx-background-radius: 0 0 0 20; -fx-border-radius: 0 0 0 20;" text="      Я знаю этот термин,&#10;      пропустить&#10;" />
                     <Label fx:id="lblN" onMouseEntered="#lblNOnEntered" onMouseExited="#lblNOnExited" prefHeight="51.0" prefWidth="152.0" style="-fx-background-color: white; -fx-background-radius: 0 0 20 0; -fx-border-radius: 0 0 20 0; -fx-border-width: 1 1 1 0; -fx-border-color: grey;" text="   Я не знаю этот термин,&#10;   учить" />
-                    ​
                 </HBox>
             </VBox>
             <Separator fx:id="sep" layoutX="22.0" layoutY="85.0" prefHeight="4.0" prefWidth="306.0" />
