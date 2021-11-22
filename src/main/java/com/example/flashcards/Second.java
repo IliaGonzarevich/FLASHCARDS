@@ -14,8 +14,8 @@ public class Second extends Application {
     public void start(Stage secondStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(Second.class.getResource("second.fxml"));
         Scene scene = new Scene(loader.load(), 350, 550);
-        secondStage.initModality(Modality.APPLICATION_MODAL);
-        secondStage.setTitle("Second stage");
+        secondStage.setTitle("FlashCards  session");
+        secondStage.setResizable(false);
         secondStage.setScene(scene);
         secondStage.showAndWait();
     }

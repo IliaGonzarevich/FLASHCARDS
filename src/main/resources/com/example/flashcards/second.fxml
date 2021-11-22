@@ -11,7 +11,86 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="350.0" style="-fx-background-color: #dddddd;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashcards.SecondController">
     <center>
-        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="234.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="350.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="resultAnchorPane" layoutY="-39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="350.0">
+                <Rectangle arcHeight="5.0" arcWidth="5.0" height="558.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="350.0">
+                    <fill>
+                        <LinearGradient startX="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Rectangle>
+                <Text fill="#2300af" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Из 20 терминов ты..." textAlignment="CENTER" wrappingWidth="300.0">
+                    <font>
+                        <Font name="Sitka Small" size="30.0" />
+                    </font>
+                </Text>
+                <Separator layoutY="125.0" prefHeight="0.0" prefWidth="350.0" />
+                <Text fill="#2300af" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   Не вспомнил" wrappingWidth="350.0">
+                    <font>
+                        <Font name="Sitka Small Bold Italic" size="20.0" />
+                    </font>
+                </Text>
+                <Label fx:id="varKnow" layoutX="203.0" layoutY="132.0" prefHeight="47.0" prefWidth="81.0" text="0">
+                    <font>
+                        <Font name="Sitka Small Bold" size="22.0" />
+                    </font></Label>
+                <Separator layoutY="175.0" prefHeight="35.0" prefWidth="350.0" />
+                <Text fill="#2300af" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   Выучил в процессе" wrappingWidth="350.0">
+                    <font>
+                        <Font name="Sitka Small Bold Italic" size="20.0" />
+                    </font>
+                </Text>
+                <Label fx:id="dontKnow" layoutX="240.0" layoutY="207.0" prefHeight="29.0" prefWidth="16.0" text="0">
+                    <font>
+                        <Font name="Sitka Small Bold" size="22.0" />
+                    </font>
+                </Label>
+                <Separator layoutY="250.0" prefWidth="350.0" />
+                <Text layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlashСards" textAlignment="CENTER" wrappingWidth="350.0">
+                    <font>
+                        <Font name="Sitka Small Bold" size="50.0" />
+                    </font>
+                    <fill>
+                        <LinearGradient cycleMethod="REFLECT" endY="0.3778626381895923" startX="1.0" startY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="0.007633587786259542">
+                                    <color>
+                                        <Color red="0.13725490868091583" blue="0.686274528503418" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="0.4633744640803093">
+                                    <color>
+                                        <Color red="0.33725491166114807" green="0.5803921818733215" blue="0.7921568751335144" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Text>
+            </AnchorPane>
+            ​
             <VBox fx:id="hideVB" layoutX="22.0" layoutY="-4.0" prefHeight="485.0" prefWidth="307.0" style="-fx-border-color: red; -fx-border-width: 0; -fx-border-radius: 20; -fx-background-radius: 15;" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0">
                 <AnchorPane prefHeight="432.0" prefWidth="306.0" style="-fx-background-color: white; -fx-background-radius: 15 15 0 0; -fx-border-radius: 15 15 0 0; -fx-border-width: 1 1 0 1; -fx-border-color: grey;">
                     <Label fx:id="lblShow" alignment="CENTER" layoutX="99.0" layoutY="216.0" prefHeight="71.0" prefWidth="108.0" style="-fx-background-color: #dddddd; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: red;" text="Показать&#10;   ответ">
@@ -22,19 +101,19 @@
                             <Cursor fx:constant="DEFAULT" />
                         </cursor></Label>
                     <AnchorPane layoutX="2.0" layoutY="1.0" prefHeight="88.0" prefWidth="302.0">
-                        <Label fx:id="lblQ" layoutX="20.0" layoutY="23.0" prefHeight="62.0" prefWidth="270.0" text="Здесь должен быть вопрос&#10;&#10;" /></AnchorPane>
+                        <Label fx:id="lblQ" layoutX="20.0" layoutY="23.0" prefHeight="62.0" prefWidth="270.0" text="Здесь должен быть вопрос&#10;&#10;" />
+                    </AnchorPane>
                     <Label fx:id="lblA" layoutX="18.0" layoutY="100.0" prefHeight="143.0" prefWidth="268.0" text="Label" />
-                    <AnchorPane layoutX="52.0" layoutY="8.0" prefHeight="200.0" prefWidth="250.0" />
                 </AnchorPane>
                 <HBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 0 0 20 20; -fx-border-radius: 20; -fx-background-color: white;">
-                    <Label fx:id="lblY" prefHeight="51.0" prefWidth="154.0" style="-fx-border-width: 1 1 1 1; -fx-border-color: grey; -fx-background-color: white; -fx-background-radius: 0 0 0 20; -fx-border-radius: 0 0 0 20;" text="      Я знаю этот термин,&#10;      пропустить&#10;" />
-                    <Label fx:id="lblN" prefHeight="51.0" prefWidth="152.0" style="-fx-background-color: white; -fx-background-radius: 0 0 20 0; -fx-border-radius: 0 0 20 0; -fx-border-width: 1 1 1 0; -fx-border-color: grey;" text="   Я не знаю этот термин,&#10;   учить" />
-
+                    <Label fx:id="lblY" onMouseEntered="#lblYOnEntered" onMouseExited="#lblYOnExited" prefHeight="51.0" prefWidth="154.0" style="-fx-border-width: 1 1 1 1; -fx-border-color: grey; -fx-background-color: white; -fx-background-radius: 0 0 0 20; -fx-border-radius: 0 0 0 20;" text="      Я знаю этот термин,&#10;      пропустить&#10;" />
+                    <Label fx:id="lblN" onMouseEntered="#lblNOnEntered" onMouseExited="#lblNOnExited" prefHeight="51.0" prefWidth="152.0" style="-fx-background-color: white; -fx-background-radius: 0 0 20 0; -fx-border-radius: 0 0 20 0; -fx-border-width: 1 1 1 0; -fx-border-color: grey;" text="   Я не знаю этот термин,&#10;   учить" />
+                    ​
                 </HBox>
             </VBox>
             <Separator fx:id="sep" layoutX="22.0" layoutY="85.0" prefHeight="4.0" prefWidth="306.0" />
-            <Label fx:id="variantLbl" layoutX="201.0" layoutY="4.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: black;" />
-            <Label fx:id="lblShow2" layoutX="131.0" layoutY="388.0" prefHeight="28.0" prefWidth="92.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-radius: 5;" text=" Показать ответ">
+            <Label fx:id="variantLbl" layoutX="161.0" layoutY="1.0" onMousePressed="#variantPressed" prefHeight="27.0" prefWidth="162.0" style="-fx-background-color: #b0e9f2; -fx-background-radius: 10 14 2 10; -fx-border-radius: 10 14 2 10; -fx-border-color: black; -fx-border-width: 1;" text="  Добавить варианты ответа" textAlignment="RIGHT" />
+            <Label fx:id="lblShow2" layoutX="131.0" layoutY="388.0" onMousePressed="#show2Pressed" prefHeight="28.0" prefWidth="92.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-radius: 5;" text=" Показать ответ">
                 <effect>
                     <Lighting bumpInput="$null">
                         <light>
@@ -47,37 +126,30 @@
                     </Lighting>
                 </effect></Label>
             <VBox fx:id="radioVertical" layoutX="40.0" layoutY="102.0" prefHeight="283.0" prefWidth="286.0" spacing="20.0">
-                <RadioButton fx:id="radio1" mnemonicParsing="false" prefWidth="281.0">
+                <RadioButton fx:id="radio1" mnemonicParsing="false" prefWidth="281.0" style="-fx-focus-traversable: false;">
                     <toggleGroup>
                         <ToggleGroup fx:id="radioGroup" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="radio2" mnemonicParsing="false" toggleGroup="$radioGroup" />
-                <RadioButton fx:id="radio3" mnemonicParsing="false" text="RadioButton" toggleGroup="$radioGroup" />
-                <RadioButton fx:id="radio4" mnemonicParsing="false" text="RadioButton" toggleGroup="$radioGroup" />
+                <RadioButton fx:id="radio2" mnemonicParsing="false" style="-fx-focus-traversable: false;" toggleGroup="$radioGroup" />
+                <RadioButton fx:id="radio3" mnemonicParsing="false" style="-fx-focus-traversable: false;" text="RadioButton" toggleGroup="$radioGroup" />
+                <RadioButton fx:id="radio4" mnemonicParsing="false" style="-fx-focus-traversable: false;" text="RadioButton" toggleGroup="$radioGroup" />
                 <padding>
                     <Insets top="10.0" />
                 </padding>
             </VBox>
-            <AnchorPane fx:id="results" layoutY="-40.0" prefHeight="550.0" prefWidth="350.0">
-                <Label fx:id="resultLbl" prefHeight="550.0" prefWidth="350.0" />
-            </AnchorPane>
         </AnchorPane>
     </center>
     <top>
-        <AnchorPane fx:id="hideTop" prefHeight="40.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+        <AnchorPane fx:id="hideTop" prefHeight="45.0" prefWidth="350.0" BorderPane.alignment="CENTER">
             <ProgressBar fx:id="pBar" layoutX="22.0" layoutY="26.0" pickOnBounds="false" prefHeight="8.0" prefWidth="304.0" progress="0.0" />
-            <Text layoutX="42.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Вы ответили правильно на 0 вопросов">
-                <font>
-                    <Font size="10.0" />
-                </font>
-            </Text>
+            <Label fx:id="learn" layoutX="39.0" layoutY="6.0" prefHeight="20.0" prefWidth="190.0" text="Вы выучили 0 терминов" />
             <Circle fill="DODGERBLUE" layoutX="28.0" layoutY="15.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" />
         </AnchorPane>
     </top>
     <bottom>
-        <AnchorPane fx:id="hideBottom" prefHeight="29.0" prefWidth="350.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
-            <Label fx:id="labelHideA" layoutX="26.0" layoutY="6.0" prefHeight="12.0" prefWidth="270.0" text="Ну ладно, если прям не помнишь, посмотри уже" />
+        <AnchorPane fx:id="hideBottom" prefHeight="26.0" prefWidth="350.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
+            <Label fx:id="labelHideA" layoutX="23.0" layoutY="4.0" onMouseEntered="#hideAOnEntered" onMouseExited="#hideAOnExited" prefHeight="18.0" prefWidth="305.0" text="Наведи, чтобы увидеть часть ответа" />
         </AnchorPane>
     </bottom>
     <effect>

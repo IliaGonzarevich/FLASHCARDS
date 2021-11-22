@@ -31,9 +31,9 @@
             </LinearGradient>
         </fill>
     </Rectangle>
-    <Label alignment="TOP_CENTER" layoutX="44.0" layoutY="54.0" text="FlashCards" textAlignment="CENTER">
+    <Label alignment="TOP_CENTER" layoutX="59.0" layoutY="54.0" text="FlashCards" textAlignment="CENTER">
         <font>
-            <Font name="Droid Serif Italic" size="44.0" />
+            <Font name="Droid Serif Bold" size="44.0" />
         </font>
         <textFill>
             <LinearGradient cycleMethod="REFLECT" endY="0.45801525625563755" startX="1.0" startY="1.0">
