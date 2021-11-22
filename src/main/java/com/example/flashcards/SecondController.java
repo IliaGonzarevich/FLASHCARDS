@@ -79,9 +79,6 @@ public class SecondController {
     @FXML
     private ProgressBar pBar;
 
-
-
-
     Questions[] questions = new Questions[]{
             new Questions("матрица", "матрицей A размера m×n\nназывается прямоугольная таблица\nсодержащая m строк и n столбцов"),
             new Questions("матрица-строка (вектор-строка)", "матрица, содержащая одну строку,\nназывается матрицей-строкой\nили вектором-строкой."),
@@ -114,7 +111,6 @@ public class SecondController {
     private boolean isVar = false;
     int[] masN;
     Random random = new Random();
-
 
     void rand3() {
         masN = new int[4];
@@ -168,14 +164,126 @@ public class SecondController {
         questions[num - 1] = x;
     }
 
-    @FXML
-    void variantPressed(){
+    public static boolean isBetween(int x, int lower, int upper) {
+        return lower <= x && x <= upper;
+    }
 
+    void doLblShow(){
+        lblShow.setOnMousePressed(show -> {
+            sep.setVisible(true);
+            lblShow.setVisible(false);
+            lblA.setVisible(true);
+            variantLbl.setVisible(false);
+        });
+    }
+
+    void doLblY(boolean isVarR){
+        lblY.setOnMousePressed(event -> {
+            rand2();
+            num--;
+            rightStat++;
+            String conclusion;
+            if (isBetween(rightStat, 2, 4)) {
+                conclusion = " термина";
+            } else if (isBetween(rightStat, 5, 20)) {
+                conclusion = " терминов";
+            } else conclusion = " термин";
+            learn.setText("Вы выучили " + rightStat + conclusion);
+
+            if (num == 0) {
+                hideVB.setVisible(false);
+                hideTop.setVisible(false);
+                hideBottom.setVisible(false);
+                variantLbl.setVisible(false);
+                resultAnchorPane.setVisible(true);
+                if(isVarR){
+                    radioVertical.setVisible(false);
+                    sep.setVisible(false);
+                    lblShow2.setVisible(false);
+                }
+            } else {
+                rand3();
+                lblA.setVisible(false);
+                pBar.setProgress(pBar.getProgress() + 0.05);
+                sep.setVisible(false);
+                lblShow.setVisible(true);
+                variantLbl.setVisible(true);
+                if(isVarR){
+                    System.out.println("isVarR");
+                    variantLbl.setText(" Добавить варианты ответа");//это
+                    radioVertical.setVisible(false);//это
+                    lblShow2.setVisible(false);
+                }
+            }
+        });
+    }
+
+    void doLblN(boolean isVarR){
+        lblN.setOnMousePressed(event -> {
+            if (questions[isTina].isChosen()) {
+                questions[isTina].setChosen(false);
+                badStat++;
+                dontKnow.setText(String.valueOf(badStat));
+            }
+            rand3();
+            sep.setVisible(false);
+            lblShow.setVisible(true);
+            lblA.setVisible(false);
+            variantLbl.setVisible(true);
+            lblShow2.setVisible(false);
+            if(isVarR) {
+                variantLbl.setText(" Добавить варианты ответа");//это
+                radioVertical.setVisible(false);//это
+            }
+        });
     }
 
     @FXML
     void show2Pressed(){
+        RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
+        if (selectedRadio != null) {
+            String toggleGroupValue = selectedRadio.getText();
+            if (!Objects.equals(toggleGroupValue, lblA.getText())) {
+                if (questions[isTina].isChosen()) {
+                    varStatF++;
+                    varKnow.setText(String.valueOf(varStatF));
+                }
+            }
+            sep.setVisible(true);
+            lblA.setVisible(true);
+            radioVertical.setVisible(false);
+            lblShow2.setVisible(false);
+            variantLbl.setVisible(false);
+            lblY.setVisible(true);
+            lblN.setVisible(true);
+            selectedRadio.setSelected(false);
+        }
+    }
 
+    @FXML
+    void variantPressed(){
+        isVar = true;
+        if (radioVertical.isVisible()) {
+            variantLbl.setText("  Добавить варианты ответа");
+            radioVertical.setVisible(false);
+            lblShow2.setVisible(false);
+            lblShow.setVisible(true);
+            lblA.setVisible(false);
+            sep.setVisible(false);
+        }
+        else{
+            sep.setVisible(true);
+            radioVertical.setVisible(true);
+            lblShow2.setVisible(true);
+            lblShow.setVisible(false);
+            variantLbl.setText("    Убрать варианты ответа");
+        }
+        doLblY(isVar);
+        doLblN(isVar);
+        RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
+        if (selectedRadio != null) {
+            selectedRadio.setSelected(false);
+        }
     }
 
     void changeBackground(Label lbl, String clr, String bckRad, String brad, String bWth) {
@@ -219,6 +327,9 @@ public class SecondController {
         lblShow2.setVisible(false);
         lblA.setVisible(false);
         sep.setVisible(false);
+        doLblShow();
+        doLblY(isVar);
+        doLblN(isVar);
     }
 
 }

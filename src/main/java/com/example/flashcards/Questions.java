@@ -2,9 +2,9 @@ package com.example.flashcards;
 
 public class Questions {
 
-    private String answer;
-    private String question;
-    private boolean choosen = true;
+    private final String answer;
+    private final String question;
+    private boolean chosen = true;
 
 
     public Questions( String question, String answer) {
@@ -20,11 +20,11 @@ public class Questions {
     public String getQuestion() { return question;}
 
 
-    public boolean isChoosen() {
-        return choosen;
+    public boolean isChosen() {
+        return chosen;
     }
 
-    public void setChoosen(boolean choosen) {
-        this.choosen = choosen;
+    public void setChosen(boolean chosen) {
+        this.chosen = chosen;
     }
 }
