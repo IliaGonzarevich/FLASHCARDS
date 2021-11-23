@@ -209,7 +209,6 @@ public class SecondController {
                 lblShow.setVisible(true);
                 variantLbl.setVisible(true);
                 if(isVarR){
-                    System.out.println("isVarR");
                     variantLbl.setText(" Добавить варианты ответа");
                     radioVertical.setVisible(false);
                     lblShow2.setVisible(false);
