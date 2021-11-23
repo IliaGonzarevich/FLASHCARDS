@@ -242,11 +242,9 @@ public class SecondController {
         RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
         if (selectedRadio != null) {
             String toggleGroupValue = selectedRadio.getText();
-            if (!Objects.equals(toggleGroupValue, lblA.getText())) {
-                if (questions[isTina].isChosen()) {
+            if (!Objects.equals(toggleGroupValue, lblA.getText()) && questions[isTina].isChosen()) {
                     varStatF++;
                     varKnow.setText(String.valueOf(varStatF));
-                }
             }
             sep.setVisible(true);
             lblA.setVisible(true);
