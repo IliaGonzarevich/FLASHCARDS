@@ -114,7 +114,8 @@ public class SecondController {
 
     void rand3() {
         masN = new int[4];
-        int j, n;
+        int j;
+        int n;
         n = random.nextInt(num);
         masN[0] = n;
         isTina = n;
@@ -135,7 +136,6 @@ public class SecondController {
         String[] variantMas = new String[4];
         for (int ch = 0; ch < variantMas.length; ch++) {
             variantMas[ch] = questions[masN[ch]].getAnswer();
-            System.out.println(variantMas[ch]);
         }
         radio1.setText(variantMas[0]);
         radio2.setText(variantMas[1]);
@@ -210,8 +210,8 @@ public class SecondController {
                 variantLbl.setVisible(true);
                 if(isVarR){
                     System.out.println("isVarR");
-                    variantLbl.setText(" Добавить варианты ответа");//это
-                    radioVertical.setVisible(false);//это
+                    variantLbl.setText(" Добавить варианты ответа");
+                    radioVertical.setVisible(false);
                     lblShow2.setVisible(false);
                 }
             }
