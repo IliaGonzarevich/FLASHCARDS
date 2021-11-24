@@ -107,7 +107,7 @@ public class SecondController {
             new Questions("19?", "19"),
             new Questions("20?", "20")
     };
-    String[] var = new String[20];
+    String[] VariantMas = new String[20];
 
     private int num = questions.length;
     private int badStat = 0;
@@ -183,6 +183,29 @@ public class SecondController {
         });
     }
 
+    void queViVod(){
+        if(badStat == 0) {
+            wrongQ.setText("Вы ответили верно на все вопросы!\nПоздравляем!");
+        } else {
+            wrongQ.setText("В процессе вы выучили следующие термины:\n");
+            String pred;
+            for (int i = 0; i < 20; i++) {
+                if (!questions[i].isChosen()) {
+                    pred = wrongQ.getText();
+                    wrongQ.setText(pred + questions[i].getQuestion() + "\n");
+                }
+            }
+        }
+        if(varStatF == 0) {
+            wrongVarQ.setText("Вы ответили верно на все вопросы,\nс испозованием вариантов ответа!\nВы молодец!");
+        } else {
+            wrongVarQ.setText("С использованием вариантов ответа, вы ответили\nневерно на следующие вопросы:\n");
+            for (int i = 0; i < varStatF; i++) {
+                String predVar = wrongVarQ.getText();
+                wrongVarQ.setText(predVar + VariantMas[i] + "\n");
+            }
+        }
+    }
     void doLblY(boolean isVarR){
         lblY.setOnMousePressed(event -> {
             rand2();
@@ -207,30 +230,7 @@ public class SecondController {
                     sep.setVisible(false);
                     lblShow2.setVisible(false);
                 }
-                wrongVarQ.setText("\n");
-
-                if(badStat == 0) {
-                    wrongQ.setText("Вы ответили верно на все вопросы!\nПоздравляем!");
-                } else {
-                    wrongVarQ.setText("В процессе вы выучили следующие термины:\n");
-                    String pred;
-                    for (int i = 0; i < 20; i++) {
-                        if (!questions[i].isChosen()) {
-                            pred = wrongQ.getText();
-                            wrongQ.setText(pred + questions[i].getQuestion() + "\n");
-                        }
-                    }
-                }
-
-                if(varStatF == 0) {
-                    wrongVarQ.setText("Вы ответили верно на все вопросы,\nс испозованием вариантов ответа!\nВы молодец!");
-                } else {
-                    wrongVarQ.setText("С использованием вариантов ответа, вы ответили\nневерно на следующие вопросы:\n");
-                    for (int i = 0; i < varStatF; i++) {
-                        String predVar = wrongVarQ.getText();
-                        wrongVarQ.setText(predVar + var[i] + "\n");
-                    }
-                }
+                queViVod();
             } else {
                 rand3();
                 lblA.setVisible(false);
@@ -267,15 +267,15 @@ public class SecondController {
         });
     }
 
-    int k = -1;
+    int variantK = -1;
     @FXML
     void show2Pressed(){
         RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
         if (selectedRadio != null) {
             String toggleGroupValue = selectedRadio.getText();
             if (!Objects.equals(toggleGroupValue, lblA.getText()) && questions[isTina].isChosen()) {
-                k++;
-                var[k] = questions[isTina].getQuestion();
+                variantK++;
+                VariantMas[variantK] = questions[isTina].getQuestion();
                 varStatF++;
                 varKnow.setText(String.valueOf(varStatF));
             }
