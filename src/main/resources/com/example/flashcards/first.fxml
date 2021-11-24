@@ -31,47 +31,16 @@
             </LinearGradient>
         </fill>
     </Rectangle>
-    <Button alignment="CENTER" layoutX="78.0" layoutY="305.0" mnemonicParsing="false" onAction="#showWindow" prefHeight="126.0" prefWidth="193.0" style="-fx-background-color: #fafafa;" text="Начать&#10;градировать&#10;" textAlignment="CENTER">
+    <Button alignment="CENTER" layoutX="78.0" layoutY="305.0" mnemonicParsing="false" onAction="#showWindow" prefHeight="126.0" prefWidth="193.0" style="-fx-background-color: #fafafa;" text="Начать&#10;" textAlignment="CENTER" textFill="#2300ad">
         <font>
-            <Font name="Sitka Small Bold Italic" size="18.0" />
-        </font>
-      <textFill>
-         <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.5343511377582115" startX="1.0">
-            <stops>
-               <Stop>
-                  <color>
-                     <Color red="0.13725490868091583" blue="0.686274528503418" />
-                  </color>
-               </Stop>
-               <Stop offset="0.007633587786259542">
-                  <color>
-                     <Color red="0.13725490868091583" blue="0.686274528503418" />
-                  </color>
-               </Stop>
-               <Stop offset="0.007633587786259542">
-                  <color>
-                     <Color red="0.13600000739097595" blue="0.6800000071525574" />
-                  </color>
-               </Stop>
-               <Stop offset="0.508904109589041">
-                  <color>
-                     <Color red="0.33725491166114807" green="0.5803921818733215" blue="0.7921568751335144" />
-                  </color>
-               </Stop>
-               <Stop offset="1.0">
-                  <color>
-                     <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
-                  </color>
-               </Stop>
-            </stops>
-         </LinearGradient>
-      </textFill></Button>
+            <Font name="Sitka Small Bold Italic" size="30.0" />
+        </font></Button>
    <Text layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlashCards" textAlignment="CENTER" wrappingWidth="350.0">
       <font>
          <Font name="Sitka Small Bold" size="50.0" />
       </font>
       <fill>
-         <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.2595420211326078" startX="1.0">
+         <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.34351155230107233" startX="1.0" startY="1.0">
             <stops>
                <Stop>
                   <color>
@@ -83,19 +52,14 @@
                      <Color red="0.13725490868091583" blue="0.686274528503418" />
                   </color>
                </Stop>
-               <Stop offset="0.007633587786259542">
-                  <color>
-                     <Color red="0.13600000739097595" blue="0.6800000071525574" />
-                  </color>
-               </Stop>
-               <Stop offset="0.40203388058140715">
+               <Stop offset="0.48650528076963284">
                   <color>
                      <Color red="0.33725491166114807" green="0.5803921818733215" blue="0.7921568751335144" />
                   </color>
                </Stop>
                <Stop offset="1.0">
                   <color>
-                     <Color red="0.5647059082984924" green="0.7803921699523926" blue="0.9725490212440491" />
+                     <Color red="0.5723000168800354" green="0.7844066619873047" blue="0.9700000286102295" />
                   </color>
                </Stop>
             </stops>
