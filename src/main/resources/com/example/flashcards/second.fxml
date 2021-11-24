@@ -52,7 +52,7 @@
                         <Font name="Sitka Small Bold Italic" size="20.0" />
                     </font>
                 </Text>
-                <Label fx:id="dontKnow" layoutX="240.0" layoutY="207.0" prefHeight="29.0" prefWidth="16.0" text="0">
+                <Label fx:id="dontKnow" layoutX="240.0" layoutY="207.0" prefHeight="30.0" prefWidth="35.0" text="0">
                     <font>
                         <Font name="Sitka Small Bold" size="22.0" />
                     </font>
@@ -89,6 +89,10 @@
                         </LinearGradient>
                     </fill>
                 </Text>
+            <Label layoutX="256.0" layoutY="139.0" onMouseEntered="#showWrongVarQ" prefHeight="18.0" prefWidth="28.0" style="-fx-background-color: yellow; -fx-background-radius: 5; -fx-border-radius: 5;" />
+            <TextArea fx:id="wrongVarQ" editable="false" layoutX="16.0" layoutY="28.0" onMouseExited="#hideWrongVarQ" prefHeight="140.0" prefWidth="301.0" />
+            <Label layoutX="275.0" layoutY="202.0" onMouseEntered="#showWrongQ" prefHeight="18.0" prefWidth="28.0" style="-fx-background-color: green; -fx-background-radius: 5; -fx-border-radius: 5;" />
+            <TextArea fx:id="wrongQ" editable="false" layoutX="15.0" layoutY="199.0" onMouseExited="#hideWrongQ" prefHeight="140.0" prefWidth="301.0" />
             </AnchorPane>
             <VBox fx:id="hideVB" layoutX="22.0" layoutY="-4.0" prefHeight="485.0" prefWidth="307.0" style="-fx-border-color: red; -fx-border-width: 0; -fx-border-radius: 20; -fx-background-radius: 15;" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0">
                 <AnchorPane prefHeight="432.0" prefWidth="306.0" style="-fx-background-color: white; -fx-background-radius: 15 15 0 0; -fx-border-radius: 15 15 0 0; -fx-border-width: 1 1 0 1; -fx-border-color: grey;">
@@ -110,7 +114,7 @@
                 </HBox>
             </VBox>
             <Separator fx:id="sep" layoutX="22.0" layoutY="85.0" prefHeight="4.0" prefWidth="306.0" />
-            <Label fx:id="variantLbl" layoutX="161.0" layoutY="1.0" onMousePressed="#variantPressed" prefHeight="27.0" prefWidth="162.0" style="-fx-background-color: #b0e9f2; -fx-background-radius: 10 14 2 10; -fx-border-radius: 10 14 2 10; -fx-border-color: black; -fx-border-width: 1;" text="  Добавить варианты ответа" textAlignment="RIGHT" />
+            <Label fx:id="variantLbl" layoutX="161.0" layoutY="1.0" onMousePressed="#variantPressed" prefHeight="22.0" prefWidth="162.0" style="-fx-background-color: #b0e9f2; -fx-background-radius: 10 14 2 10; -fx-border-radius: 10 14 2 10; -fx-border-color: black; -fx-border-width: 1;" text="  Добавить варианты ответа" textAlignment="RIGHT" />
             <Label fx:id="lblShow2" layoutX="131.0" layoutY="388.0" onMousePressed="#show2Pressed" prefHeight="28.0" prefWidth="92.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-radius: 5;" text=" Показать ответ">
                 <effect>
                     <Lighting bumpInput="$null">

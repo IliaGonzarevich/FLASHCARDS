@@ -5,10 +5,16 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.security.SecureRandom;
 import java.util.Objects;
-import java.util.Random;
 
 public class SecondController {
+
+    @FXML
+    private TextArea wrongVarQ;
+
+    @FXML
+    private TextArea wrongQ;
 
     @FXML
     private Label varKnow;
@@ -80,13 +86,13 @@ public class SecondController {
     private ProgressBar pBar;
 
     Questions[] questions = new Questions[]{
-            new Questions("матрица", "матрицей A размера m×n\nназывается прямоугольная таблица\nсодержащая m строк и n столбцов"),
-            new Questions("матрица-строка (вектор-строка)", "матрица, содержащая одну строку,\nназывается матрицей-строкой\nили вектором-строкой."),
-            new Questions("матрица-столбец (вектор-столбец)", "матрица, содержащая один столбец,\nназывается матрицей-столбцом\nили вектором-столбцом"),
-            new Questions("4?", "4"),
-            new Questions("5?", "5"),
-            new Questions("6?", "6"),
-            new Questions("7?", "7"),
+            new Questions("матрица", "прямоугольная таблица размером m x n\nсодержащая m строк и n столбцов"),
+            new Questions("матрица-строка (вектор-строка)", "матрица, содержащая одну строку"),
+            new Questions("матрица-столбец (вектор-столбец)", "матрица, содержащая один столбец"),
+            new Questions("квадратная матрица", "матрица, число строк которой равно\nчислу столбцов, т.е. m=n"),
+            new Questions("транспонированная матрица", "матрица, получившаяся в результате\nперестановки каждой строки некой матрицы\nв столбцы этой матрицы в том же порядке"),
+            new Questions("минор", "определитель aij порядка n−1 матрицы An,\nполученный из определителя этой же\nматрицы после вычеркивания в ней\ni-той строки и j-ого столбца"),
+            new Questions("алгебраическое дополнение матрицы", "число Aij=(−1)^(i+j) * Mij,\nгде Mij — дополнительный минор"),
             new Questions("8?", "8"),
             new Questions("9?", "9"),
             new Questions("10?", "10"),
@@ -101,7 +107,7 @@ public class SecondController {
             new Questions("19?", "19"),
             new Questions("20?", "20")
     };
-
+    String[] var = new String[20];
 
     private int num = questions.length;
     private int badStat = 0;
@@ -110,7 +116,7 @@ public class SecondController {
     private int isTina;
     private boolean isVar = false;
     int[] masN;
-    Random random = new Random();
+    SecureRandom random = new SecureRandom();
 
     void rand3() {
         masN = new int[4];
@@ -201,6 +207,30 @@ public class SecondController {
                     sep.setVisible(false);
                     lblShow2.setVisible(false);
                 }
+                wrongVarQ.setText("\n");
+
+                if(badStat == 0) {
+                    wrongQ.setText("Вы ответили верно на все вопросы!\nПоздравляем!");
+                } else {
+                    wrongVarQ.setText("В процессе вы выучили следующие термины:\n");
+                    String pred;
+                    for (int i = 0; i < 20; i++) {
+                        if (!questions[i].isChosen()) {
+                            pred = wrongQ.getText();
+                            wrongQ.setText(pred + questions[i].getQuestion() + "\n");
+                        }
+                    }
+                }
+
+                if(varStatF == 0) {
+                    wrongVarQ.setText("Вы ответили верно на все вопросы,\nс испозованием вариантов ответа!\nВы молодец!");
+                } else {
+                    wrongVarQ.setText("С использованием вариантов ответа, вы ответили\nневерно на следующие вопросы:\n");
+                    for (int i = 0; i < varStatF; i++) {
+                        String predVar = wrongVarQ.getText();
+                        wrongVarQ.setText(predVar + var[i] + "\n");
+                    }
+                }
             } else {
                 rand3();
                 lblA.setVisible(false);
@@ -237,14 +267,17 @@ public class SecondController {
         });
     }
 
+    int k = -1;
     @FXML
     void show2Pressed(){
         RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
         if (selectedRadio != null) {
             String toggleGroupValue = selectedRadio.getText();
             if (!Objects.equals(toggleGroupValue, lblA.getText()) && questions[isTina].isChosen()) {
-                    varStatF++;
-                    varKnow.setText(String.valueOf(varStatF));
+                k++;
+                var[k] = questions[isTina].getQuestion();
+                varStatF++;
+                varKnow.setText(String.valueOf(varStatF));
             }
             sep.setVisible(true);
             lblA.setVisible(true);
@@ -283,6 +316,27 @@ public class SecondController {
         }
     }
 
+    @FXML
+    void showWrongQ(){
+        wrongQ.setVisible(true);
+    }
+
+    @FXML
+    void hideWrongQ(){
+       wrongQ.setVisible(false);
+    }
+
+    @FXML
+    void showWrongVarQ(){
+        wrongVarQ.setVisible(true);
+    }
+
+    @FXML
+    void hideWrongVarQ(){
+        wrongVarQ.setVisible(false);
+    }
+
+
     void changeBackground(Label lbl, String clr, String bckRad, String brad, String bWth) {
         lbl.setStyle("-fx-background-color: " + clr + "; -fx-background-radius: 0 0 " + bckRad + "; -fx-border-radius: 0 0 " + brad + "; -fx-border-color: grey; -fx-border-width: 1 1 1 " + bWth + ";");
     }
@@ -319,6 +373,10 @@ public class SecondController {
     @FXML
     void initialize() {
         rand3();
+        wrongVarQ.setVisible(false);
+        wrongVarQ.setStyle("-fx-focus-traversable: false");
+        wrongQ.setVisible(false);//добавил
+        wrongQ.setStyle("-fx-focus-traversable: false");
         resultAnchorPane.setVisible(false);
         radioVertical.setVisible(false);
         lblShow2.setVisible(false);
