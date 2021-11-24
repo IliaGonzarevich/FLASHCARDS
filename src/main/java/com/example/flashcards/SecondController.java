@@ -107,7 +107,7 @@ public class SecondController {
             new Questions("19?", "19"),
             new Questions("20?", "20")
     };
-    String[] VariantMas = new String[20];
+    String[] variantMas = new String[20];
 
     private int num = questions.length;
     private int badStat = 0;
@@ -202,7 +202,7 @@ public class SecondController {
             wrongVarQ.setText("С использованием вариантов ответа, вы ответили\nневерно на следующие вопросы:\n");
             for (int i = 0; i < varStatF; i++) {
                 String predVar = wrongVarQ.getText();
-                wrongVarQ.setText(predVar + VariantMas[i] + "\n");
+                wrongVarQ.setText(predVar + variantMas[i] + "\n");
             }
         }
     }
@@ -275,7 +275,7 @@ public class SecondController {
             String toggleGroupValue = selectedRadio.getText();
             if (!Objects.equals(toggleGroupValue, lblA.getText()) && questions[isTina].isChosen()) {
                 variantK++;
-                VariantMas[variantK] = questions[isTina].getQuestion();
+                variantMas[variantK] = questions[isTina].getQuestion();
                 varStatF++;
                 varKnow.setText(String.valueOf(varStatF));
             }
