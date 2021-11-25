@@ -31,7 +31,7 @@
             </LinearGradient>
         </fill>
     </Rectangle>
-    <Button alignment="CENTER" layoutX="78.0" layoutY="305.0" mnemonicParsing="false" onAction="#showWindow" prefHeight="126.0" prefWidth="193.0" style="-fx-background-color: #fafafa;" text="Начать&#10;" textAlignment="CENTER" textFill="#2300ad">
+    <Button alignment="CENTER" layoutX="78.0" layoutY="305.0" mnemonicParsing="false" onAction="#showWindow" prefHeight="126.0" prefWidth="193.0" style="-fx-background-color: #fafafa;" text="Начать&#10;сессию&#10;" textAlignment="CENTER" textFill="#2300ad">
         <font>
             <Font name="Sitka Small Bold Italic" size="30.0" />
         </font></Button>
@@ -40,7 +40,7 @@
          <Font name="Sitka Small Bold" size="50.0" />
       </font>
       <fill>
-         <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.34351155230107233" startX="1.0" startY="1.0">
+         <LinearGradient cycleMethod="REFLECT" endY="0.34351155230107233" startX="1.0" startY="1.0">
             <stops>
                <Stop>
                   <color>
