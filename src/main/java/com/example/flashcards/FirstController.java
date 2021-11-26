@@ -6,13 +6,14 @@ import javafx.scene.control.TextField;
 
 public class FirstController {
 
+    public static int countQ = 10;
+
     @FXML
-    private Label ErrorField;
+    private Label errorNa;
 
     @FXML
     private TextField num;
 
-    public static int countQ = 10;
     @FXML
     protected void showWindow() throws Exception {
         boolean isCorrect = true;
@@ -26,12 +27,12 @@ public class FirstController {
         }
         if(isCorrect) {
             num.clear();
-            ErrorField.setText("");
+            errorNa.setText("");
             Second second = new Second();
             second.showWindow();
         }
         else{
-            ErrorField.setText("Некоректные данные!\nМаксимальное количество вопросов 30");
+            errorNa.setText("Некоректные данные!\nМаксимальное количество вопросов 30");
         }
     }
 }

@@ -7,6 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashcards.FirstController">
     <Rectangle arcHeight="5.0" arcWidth="5.0" height="557.0" layoutY="-5.0" stroke="#090000" strokeType="INSIDE" strokeWidth="0.0" width="350.0">
         <fill>
@@ -68,7 +69,7 @@
     </Text>
     <Label layoutX="40.0" layoutY="235.0" text="Установить количество вопросов" />
     <TextField fx:id="num" layoutX="241.0" layoutY="230.0" prefHeight="26.0" prefWidth="61.0" promptText="Max 30" />
-    <Label fx:id="ErrorField" alignment="CENTER" layoutX="40.0" layoutY="256.0" prefHeight="44.0" prefWidth="262.0" textFill="RED" />
+    <Label fx:id="errorNa" alignment="CENTER" layoutX="40.0" layoutY="256.0" prefHeight="44.0" prefWidth="262.0" textFill="RED" />
     <cursor>
         <Cursor fx:constant="DEFAULT" />
     </cursor>

@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 import static com.example.flashcards.FirstController.countQ;
 
+/**
+ * tretretre
+ */
 public class SecondController {
 
     @FXML
@@ -99,6 +102,7 @@ public class SecondController {
     private Label labelHideA;
     @FXML
     private Label resultTitle;
+
     @FXML
     private ProgressBar pBar;
     Questions[] questions = new Questions[]{
@@ -234,6 +238,11 @@ public class SecondController {
             }
         }
     }
+
+    /**
+     * vtnjl ngtjq
+     * @param isVarR sgervd
+     */
     void doLblY(boolean isVarR){
         lblY.setOnMousePressed(event -> {
             peRest();
@@ -276,6 +285,10 @@ public class SecondController {
         });
     }
 
+    /**
+     * sjnvn
+     * @param isVarR параметр
+     */
     void doLblN(boolean isVarR){
         lblN.setOnMousePressed(event -> {
             if (questions[isTina].isChosen()) {
@@ -360,47 +373,49 @@ public class SecondController {
     }
 
     @FXML
-    void creatFile(){
-            String name = textField.getText();
-            if (name.endsWith(".txt")) {
-                try {
-                    FileWriter fw = new FileWriter(name);
-                    errorLbl.setStyle("-fx-text-fill: green");
-                    errorLbl.setText("Файл " + name + " успешно создан!");
-                    if (badStat == 0) {
-                        fw.write("Вами не было допущено никаких ошибок! Поздравляем!\n");
-                    }
-                    else {
-                        fw.write("В процессе вы выучили следующие термины:\n");
-                        for (int g = 0; g < 30; g++) {
-                            if (!questions[g].isChosen()) {
-                                fw.write("*" + questions[g].getQuestion() + "\n");
-                                g++;
-                                fw.write("\tОтвет: " + questions[g].getAnswer().replaceAll("[\n]", " ") + "\n");
-                                g++;
-                            }
-                        }
-                    }
-                    int h = 0;
-                    if (varMas.size() == 0) {
-                        fw.write("Вы ответили верно на все вопросы с использованием вариантов ответа!");
-                    } else {
-                        fw.write("С использованием вариантов ответа вы ответили неверно на следующие вопросы:\n");
-                        while (h < varMas.size()) {
-                            fw.write("*" + varMas.get(h) + "\n");
-                            h++;
-                            fw.write("\tОтвет: " + varMas.get(h).replaceAll("[\n]", " ") + "\n");
-                            h++;
-                        }
-                    }
-                    fw.close();
-                } catch (IOException e) {
-                    errorLbl.setText("Ошибка: " + e);
+    void creatFile() throws IOException {
+        FileWriter fw = null;
+        String name = textField.getText();
+        if (name.endsWith(".txt")) {
+            try {
+                fw = new FileWriter(name);
+                errorLbl.setStyle("-fx-text-fill: green");
+                errorLbl.setText("Файл " + name + " успешно создан!");
+                if (badStat == 0) {
+                    fw.write("Вами не было допущено никаких ошибок! Поздравляем!\n");
                 }
-            } else {
-                errorLbl.setText("Название файла не корректно!\nПроверьте наличие .txt в конце.");
+                else {
+                    fw.write("В процессе вы выучили следующие термины:\n");
+                    for (int g = 0; g < 30; g++) {
+                        if (!questions[g].isChosen()) {
+                            fw.write("*" + questions[g].getQuestion() + "\n");
+                            g++;
+                            fw.write("\tОтвет: " + questions[g].getAnswer().replaceAll("[\n]", " ") + "\n");
+                            g++;
+                        }
+                    }
+                }
+                int h = 0;
+                if (varMas.size() == 0) {
+                    fw.write("Вы ответили верно на все вопросы с использованием вариантов ответа!");
+                } else {
+                    fw.write("С использованием вариантов ответа вы ответили неверно на следующие вопросы:\n");
+                    while (h < varMas.size()) {
+                        fw.write("*" + varMas.get(h) + "\n");
+                        h++;
+                        fw.write("\tОтвет: " + varMas.get(h).replaceAll("[\n]", " ") + "\n");
+                        h++;
+                    }
+                }
+            } catch (IOException e) {
+                errorLbl.setText("Ошибка: " + e);
+            } finally {
+                 if(fw != null) fw.close();
             }
-            textField.setText("");
+        } else {
+            errorLbl.setText("Название файла не корректно!\nПроверьте наличие .txt в конце.");
+        }
+        textField.setText("");
     }
 
     @FXML
@@ -422,7 +437,6 @@ public class SecondController {
     void hideWrongVarQ(){
         wrongVarQ.setVisible(false);
     }
-
 
     void changeBackground(Label lbl, String clr, String bckRad, String brad, String bWth) {
         lbl.setStyle("-fx-background-color: " + clr + "; -fx-background-radius: 0 0 " + bckRad + "; -fx-border-radius: 0 0 " + brad + "; -fx-border-color: grey; -fx-border-width: 1 1 1 " + bWth + ";");
