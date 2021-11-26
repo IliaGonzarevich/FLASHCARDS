@@ -135,11 +135,12 @@ public class SecondController {
             new Questions("парабола","геометрическое место точек плоскости,\nкаждая из которых равноудалена от\nданной точки"),
             new Questions("линейно независимая система векторов","линейная комбинация векторов равна\nнулевому вектору когда все коэффициенты\nлинейной комбинации равны нулю"),
             new Questions("линейно зависимая система векторов","если существуют такие действительные\nчисла α1,α2,…,αn, хотя бы одно из\nкоторых не равно нулю, такие,\nчто их линейная комбинация равна\nнулевому вектору"),
-            new Questions("Линейной комбинацией n векторов","вектор вида: α1a¯1+α2a¯2+…+αna¯n,\nгде α1,α2,…,αn– некоторые действительные числа,\nназываемые коэффициентами линейной комбинации")
+            new Questions("линейная комбинация n векторов","вектор вида: α1a¯1+α2a¯2+…+αna¯n,\nгде α1,α2,…,αn– некоторые действительные числа,\nназываемые коэффициентами линейной комбинации")
     };
 
     ArrayList<String> varMas = new ArrayList<>();
     private int num = countQ;
+    private int length = 30;
     private int badStat = 0;
     private int rightStat = 0;
     private int varStatF = 0;
@@ -152,7 +153,8 @@ public class SecondController {
         masN = new int[4];
         int j;
         int n;
-        n = random.nextInt(num);
+        n = random.nextInt(length);
+        length--;
         masN[0] = n;
         isTina = n;
         for (int i = 1; i < masN.length; i++) {
@@ -196,8 +198,8 @@ public class SecondController {
     void peRest() {
         Questions x;
         x = questions[isTina];
-        questions[isTina] = questions[num - 1];
-        questions[num - 1] = x;
+        questions[isTina] = questions[length - 1];
+        questions[length - 1] = x;
     }
 
     public static boolean isBetween(int x, int lower, int upper) {
@@ -308,7 +310,6 @@ public class SecondController {
             }
         });
     }
-
     @FXML
     void show2Pressed(){
         RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
@@ -330,7 +331,6 @@ public class SecondController {
             selectedRadio.setSelected(false);
         }
     }
-
     @FXML
     void variantPressed(){
         isVar = true;
@@ -356,7 +356,6 @@ public class SecondController {
             selectedRadio.setSelected(false);
         }
     }
-
     @FXML
     void textShow(){
         errorLbl.setText("");
@@ -371,7 +370,6 @@ public class SecondController {
             creatFile.setVisible(true);
         }
     }
-
     @FXML
     void creatFile() throws IOException {
         FileWriter fw = null;
@@ -417,7 +415,6 @@ public class SecondController {
         }
         textField.setText("");
     }
-
     @FXML
     void showWrongQ(){
         wrongQ.setVisible(true);
@@ -493,5 +490,4 @@ public class SecondController {
         doLblY(isVar);
         doLblN(isVar);
     }
-
 }
