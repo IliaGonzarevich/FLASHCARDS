@@ -31,11 +31,11 @@
                         </LinearGradient>
                     </fill>
                 </Rectangle>
-                <Text fill="#2300af" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Из 20 терминов ты..." textAlignment="CENTER" wrappingWidth="300.0">
+                <Label fx:id="resultTitle" layoutX="12.0" layoutY="50.0" prefHeight="36.0" prefWidth="334.0" textAlignment="CENTER">
                     <font>
                         <Font name="Sitka Small" size="30.0" />
                     </font>
-                </Text>
+                </Label>
                 <Separator layoutY="125.0" prefHeight="0.0" prefWidth="350.0" />
                 <Text fill="#2300af" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   Не вспомнил" wrappingWidth="350.0">
                     <font>
@@ -90,9 +90,13 @@
                     </fill>
                 </Text>
             <Label layoutX="256.0" layoutY="139.0" onMouseEntered="#showWrongVarQ" prefHeight="18.0" prefWidth="28.0" style="-fx-background-color: yellow; -fx-background-radius: 5; -fx-border-radius: 5;" />
-            <TextArea fx:id="wrongVarQ" editable="false" layoutX="16.0" layoutY="28.0" onMouseExited="#hideWrongVarQ" prefHeight="140.0" prefWidth="301.0" />
+            <TextArea fx:id="wrongVarQ" editable="false" layoutX="16.0" layoutY="88.0" onMouseExited="#hideWrongVarQ" prefHeight="100.0" prefWidth="310.0" />
             <Label layoutX="275.0" layoutY="202.0" onMouseEntered="#showWrongQ" prefHeight="18.0" prefWidth="28.0" style="-fx-background-color: green; -fx-background-radius: 5; -fx-border-radius: 5;" />
-            <TextArea fx:id="wrongQ" editable="false" layoutX="15.0" layoutY="199.0" onMouseExited="#hideWrongQ" prefHeight="140.0" prefWidth="301.0" />
+            <TextArea fx:id="wrongQ" editable="false" layoutX="15.0" layoutY="199.0" onMouseExited="#hideWrongQ" prefHeight="100.0" prefWidth="302.0" />
+            <TextField fx:id="textField" layoutX="74.0" layoutY="305.0" prefHeight="26.0" prefWidth="215.0" promptText="&lt;название_файла&gt;.txt" />
+            <Label fx:id="errorLbl" layoutX="74.0" layoutY="355.0" prefHeight="55.0" prefWidth="223.0" textFill="RED" />
+            <Button fx:id="fileButton" layoutX="221.0" layoutY="13.0" mnemonicParsing="false" onMousePressed="#textShow" prefHeight="26.0" prefWidth="109.0" text="Создать отчёт" />
+            <Button fx:id="creatFile" layoutX="74.0" layoutY="335.0" mnemonicParsing="false" onMousePressed="#creatFile" prefHeight="26.0" prefWidth="215.0" text="Создать" />
             </AnchorPane>
             <VBox fx:id="hideVB" layoutX="22.0" layoutY="-4.0" prefHeight="485.0" prefWidth="307.0" style="-fx-border-color: red; -fx-border-width: 0; -fx-border-radius: 20; -fx-background-radius: 15;" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0">
                 <AnchorPane prefHeight="432.0" prefWidth="306.0" style="-fx-background-color: white; -fx-background-radius: 15 15 0 0; -fx-border-radius: 15 15 0 0; -fx-border-width: 1 1 0 1; -fx-border-color: grey;">
@@ -104,7 +108,10 @@
                             <Cursor fx:constant="DEFAULT" />
                         </cursor></Label>
                     <AnchorPane layoutX="2.0" layoutY="1.0" prefHeight="88.0" prefWidth="302.0">
-                        <Label fx:id="lblQ" layoutX="20.0" layoutY="23.0" prefHeight="62.0" prefWidth="270.0" text="Здесь должен быть вопрос&#10;&#10;" />
+                        <Label fx:id="lblQ" layoutX="20.0" layoutY="23.0" prefHeight="62.0" prefWidth="270.0" text="Здесь должен быть вопрос&#10;&#10;">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                     </AnchorPane>
                     <Label fx:id="lblA" layoutX="18.0" layoutY="100.0" prefHeight="143.0" prefWidth="268.0" text="Label" />
                 </AnchorPane>

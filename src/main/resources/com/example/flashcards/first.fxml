@@ -31,41 +31,44 @@
             </LinearGradient>
         </fill>
     </Rectangle>
-    <Button alignment="CENTER" layoutX="75.0" layoutY="325.0" mnemonicParsing="false" onAction="#showWindow" prefHeight="125.0" prefWidth="200.0" style="-fx-background-color: #fafafa;" text="Начать&#10;сессию&#10;" textAlignment="CENTER" textFill="#2300ad">
+    <Button alignment="CENTER" layoutX="78.0" layoutY="370.0" mnemonicParsing="false" onAction="#showWindow" prefHeight="126.0" prefWidth="193.0" style="-fx-background-color: #fafafa;" text="Начать&#10;сессию&#10;" textAlignment="CENTER" textFill="#2300ad">
         <font>
             <Font name="Sitka Small Bold Italic" size="30.0" />
         </font></Button>
-   <Text layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlashCards" textAlignment="CENTER" wrappingWidth="350.0">
-      <font>
-         <Font name="Sitka Small Bold" size="50.0" />
-      </font>
-      <fill>
-         <LinearGradient cycleMethod="REFLECT" endY="0.34351155230107233" startX="1.0" startY="1.0">
-            <stops>
-               <Stop>
-                  <color>
-                     <Color red="0.13725490868091583" blue="0.686274528503418" />
-                  </color>
-               </Stop>
-               <Stop offset="0.007633587786259542">
-                  <color>
-                     <Color red="0.13725490868091583" blue="0.686274528503418" />
-                  </color>
-               </Stop>
-               <Stop offset="0.48650528076963284">
-                  <color>
-                     <Color red="0.33725491166114807" green="0.5803921818733215" blue="0.7921568751335144" />
-                  </color>
-               </Stop>
-               <Stop offset="1.0">
-                  <color>
-                     <Color red="0.5723000168800354" green="0.7844066619873047" blue="0.9700000286102295" />
-                  </color>
-               </Stop>
-            </stops>
-         </LinearGradient>
-      </fill>
-   </Text>
+    <Text layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlashCards" textAlignment="CENTER" wrappingWidth="350.0">
+        <font>
+            <Font name="Sitka Small Bold" size="50.0" />
+        </font>
+        <fill>
+            <LinearGradient cycleMethod="REFLECT" endY="0.34351155230107233" startX="1.0" startY="1.0">
+                <stops>
+                    <Stop>
+                        <color>
+                            <Color red="0.13725490868091583" blue="0.686274528503418" />
+                        </color>
+                    </Stop>
+                    <Stop offset="0.007633587786259542">
+                        <color>
+                            <Color red="0.13725490868091583" blue="0.686274528503418" />
+                        </color>
+                    </Stop>
+                    <Stop offset="0.48650528076963284">
+                        <color>
+                            <Color red="0.33725491166114807" green="0.5803921818733215" blue="0.7921568751335144" />
+                        </color>
+                    </Stop>
+                    <Stop offset="1.0">
+                        <color>
+                            <Color red="0.5723000168800354" green="0.7844066619873047" blue="0.9700000286102295" />
+                        </color>
+                    </Stop>
+                </stops>
+            </LinearGradient>
+        </fill>
+    </Text>
+    <Label layoutX="40.0" layoutY="235.0" text="Установить количество вопросов" />
+    <TextField fx:id="num" layoutX="241.0" layoutY="230.0" prefHeight="26.0" prefWidth="61.0" promptText="Max 30" />
+    <Label fx:id="ErrorField" alignment="CENTER" layoutX="40.0" layoutY="256.0" prefHeight="44.0" prefWidth="262.0" textFill="RED" />
     <cursor>
         <Cursor fx:constant="DEFAULT" />
     </cursor>

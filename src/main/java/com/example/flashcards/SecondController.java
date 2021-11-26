@@ -5,10 +5,26 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Objects;
+import static com.example.flashcards.FirstController.countQ;
 
 public class SecondController {
+
+    @FXML
+    private Label errorLbl;
+
+    @FXML
+    private Button creatFile;
+
+    @FXML
+    private Button fileButton;
+
+    @FXML
+    private TextField textField;
 
     @FXML
     private TextArea wrongVarQ;
@@ -81,10 +97,10 @@ public class SecondController {
 
     @FXML
     private Label labelHideA;
-
+    @FXML
+    private Label resultTitle;
     @FXML
     private ProgressBar pBar;
-
     Questions[] questions = new Questions[]{
             new Questions("матрица", "прямоугольная таблица размером m x n\nсодержащая m строк и n столбцов"),
             new Questions("матрица-строка (вектор-строка)", "матрица, содержащая одну строку"),
@@ -117,9 +133,9 @@ public class SecondController {
             new Questions("линейно зависимая система векторов","если существуют такие действительные\nчисла α1,α2,…,αn, хотя бы одно из\nкоторых не равно нулю, такие,\nчто их линейная комбинация равна\nнулевому вектору"),
             new Questions("Линейной комбинацией n векторов","вектор вида: α1a¯1+α2a¯2+…+αna¯n,\nгде α1,α2,…,αn– некоторые действительные числа,\nназываемые коэффициентами линейной комбинации")
     };
-    String[] varMas = new String[30];
 
-    private int num = questions.length;
+    ArrayList<String> varMas = new ArrayList<>();
+    private int num = countQ;
     private int badStat = 0;
     private int rightStat = 0;
     private int varStatF = 0;
@@ -128,7 +144,7 @@ public class SecondController {
     int[] masN;
     SecureRandom random = new SecureRandom();
 
-    void rand3() {
+    void rand() {
         masN = new int[4];
         int j;
         int n;
@@ -173,7 +189,7 @@ public class SecondController {
         }
     }
 
-    void rand2() {
+    void peRest() {
         Questions x;
         x = questions[isTina];
         questions[isTina] = questions[num - 1];
@@ -207,29 +223,32 @@ public class SecondController {
             }
         }
         if(varStatF == 0) {
-            wrongVarQ.setText("Вы ответили верно на все вопросы,\nс испозованием вариантов ответа!\nВы молодец!");
+            wrongVarQ.setText("Вы ответили верно на все вопросы\nс использованием вариантов ответа!\nВы молодец!");
         } else {
-            wrongVarQ.setText("С использованием вариантов ответа, вы ответили\nневерно на следующие вопросы:\n");
-            for (int i = 0; i < varStatF; i++) {
+            wrongVarQ.setText("С использованием вариантов ответа вы ответили\nневерно на следующие вопросы:\n");
+            int i = 0;
+            while (i < varMas.size()) {
                 String predVar = wrongVarQ.getText();
-                wrongVarQ.setText(predVar + varMas[i] + "\n");
+                wrongVarQ.setText(predVar + varMas.get(i) + "\n");
+                i = i + 2;
             }
         }
     }
     void doLblY(boolean isVarR){
         lblY.setOnMousePressed(event -> {
-            rand2();
+            peRest();
             num--;
             rightStat++;
             String conclusion;
-            if (isBetween(rightStat, 2, 4) | isBetween(rightStat, 22, 24)) {
+            if (isBetween(rightStat, 2, 4) || isBetween(rightStat, 22, 24)) {
                 conclusion = " термина";
-            } else if (isBetween(rightStat, 5, 20) | isBetween(rightStat, 25, 30)) {
+            } else if (isBetween(rightStat, 5, 20) || isBetween(rightStat, 25, 30)) {
                 conclusion = " терминов";
             } else conclusion = " термин";
             learn.setText("Вы выучили " + rightStat + conclusion);
 
             if (num == 0) {
+                resultTitle.setText("Из " + countQ + " терминов ты...");
                 hideVB.setVisible(false);
                 hideTop.setVisible(false);
                 hideBottom.setVisible(false);
@@ -242,9 +261,9 @@ public class SecondController {
                 }
                 queViVod();
             } else {
-                rand3();
+                rand();
                 lblA.setVisible(false);
-                pBar.setProgress(pBar.getProgress() + 0.05);
+                pBar.setProgress(pBar.getProgress() + 1.0/countQ);
                 sep.setVisible(false);
                 lblShow.setVisible(true);
                 variantLbl.setVisible(true);
@@ -264,7 +283,7 @@ public class SecondController {
                 badStat++;
                 dontKnow.setText(String.valueOf(badStat));
             }
-            rand3();
+            rand();
             sep.setVisible(false);
             lblShow.setVisible(true);
             lblA.setVisible(false);
@@ -277,15 +296,14 @@ public class SecondController {
         });
     }
 
-    int variantK = -1;
     @FXML
     void show2Pressed(){
         RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
         if (selectedRadio != null) {
             String toggleGroupValue = selectedRadio.getText();
             if (!Objects.equals(toggleGroupValue, lblA.getText()) && questions[isTina].isChosen()) {
-                variantK++;
-                varMas[variantK] = questions[isTina].getQuestion();
+                varMas.add(questions[isTina].getQuestion());
+                varMas.add(questions[isTina].getAnswer());
                 varStatF++;
                 varKnow.setText(String.valueOf(varStatF));
             }
@@ -316,7 +334,7 @@ public class SecondController {
             radioVertical.setVisible(true);
             lblShow2.setVisible(true);
             lblShow.setVisible(false);
-            variantLbl.setText("    Убрать варианты ответа");
+            variantLbl.setText("   Убрать варианты ответа");
         }
         doLblY(isVar);
         doLblN(isVar);
@@ -324,6 +342,65 @@ public class SecondController {
         if (selectedRadio != null) {
             selectedRadio.setSelected(false);
         }
+    }
+
+    @FXML
+    void textShow(){
+        errorLbl.setText("");
+        if (textField.isVisible()) {
+            textField.setVisible(false);
+            fileButton.setText("Создать отчёт");
+            creatFile.setVisible(false);
+            textField.setText("");
+        } else {
+            fileButton.setText("Вернуться");
+            textField.setVisible(true);
+            creatFile.setVisible(true);
+        }
+    }
+
+    @FXML
+    void creatFile(){
+            String name = textField.getText();
+            if (name.endsWith(".txt")) {
+                try {
+                    FileWriter fw = new FileWriter(name);
+                    errorLbl.setStyle("-fx-text-fill: green");
+                    errorLbl.setText("Файл " + name + " успешно создан!");
+                    if (badStat == 0) {
+                        fw.write("Вами не было допущено никаких ошибок! Поздравляем!\n");
+                    }
+                    else {
+                        fw.write("В процессе вы выучили следующие термины:\n");
+                        for (int g = 0; g < 30; g++) {
+                            if (!questions[g].isChosen()) {
+                                fw.write("*" + questions[g].getQuestion() + "\n");
+                                g++;
+                                fw.write("\tОтвет: " + questions[g].getAnswer().replaceAll("[\n]", " ") + "\n");
+                                g++;
+                            }
+                        }
+                    }
+                    int h = 0;
+                    if (varMas.size() == 0) {
+                        fw.write("Вы ответили верно на все вопросы с использованием вариантов ответа!");
+                    } else {
+                        fw.write("С использованием вариантов ответа вы ответили неверно на следующие вопросы:\n");
+                        while (h < varMas.size()) {
+                            fw.write("*" + varMas.get(h) + "\n");
+                            h++;
+                            fw.write("\tОтвет: " + varMas.get(h).replaceAll("[\n]", " ") + "\n");
+                            h++;
+                        }
+                    }
+                    fw.close();
+                } catch (IOException e) {
+                    errorLbl.setText("Ошибка: " + e);
+                }
+            } else {
+                errorLbl.setText("Название файла не корректно!\nПроверьте наличие .txt в конце.");
+            }
+            textField.setText("");
     }
 
     @FXML
@@ -380,9 +457,15 @@ public class SecondController {
     void hideAOnExited() {
         labelHideA.setText("Наведи, чтобы увидеть часть ответа");
     }
+
     @FXML
     void initialize() {
-        rand3();
+        rand();
+        creatFile.setVisible(false);
+        creatFile.setStyle("-fx-focus-traversable: false");
+        fileButton.setStyle("-fx-focus-traversable: false");
+        textField.setVisible(false);
+        textField.setStyle("-fx-focus-traversable: false");
         wrongVarQ.setVisible(false);
         wrongVarQ.setStyle("-fx-focus-traversable: false");
         wrongQ.setVisible(false);//добавил
