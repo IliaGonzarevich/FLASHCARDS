@@ -375,7 +375,7 @@ public class SecondController {
                 }
                 else {
                     fw.write("В процессе вы выучили следующие термины:\n");
-                    for (int g = 0; g < 30; g++) {
+                    for (int g = 0; g < col; g++) {
                         if (!questions.get(g).isChosen()) {
                             fw.write("*" + questions.get(g).getQuestion() + "\n");
                             g++;

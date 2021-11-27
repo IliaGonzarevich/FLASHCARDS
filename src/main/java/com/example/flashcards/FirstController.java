@@ -11,8 +11,8 @@ import java.io.FileReader;
 public class FirstController {
 
     public static String nameF = "in.txt";
-    public static int countQ = 4;
-    public static int col = 4;
+    public static int countQ = 30;
+    public static int col = 30;
 
     @FXML
     private Label colVop;
@@ -37,6 +37,7 @@ public class FirstController {
 
     @FXML
     void check(){
+        num.setText("");
         errorNa.setStyle(styleText("red"));
         if(pathName.getLength() > 0){
             String fileName = pathName.getText();
