@@ -47,6 +47,7 @@ public class FirstController {
                     errorNa.setText("Файл найден!");
                     chosenF.setText("Выбранный файл: " + fileName);
                     try {
+                        col = 0;
                         while((reader.readLine()) != null && (reader.readLine()) != null){
                             col++;
                         }
