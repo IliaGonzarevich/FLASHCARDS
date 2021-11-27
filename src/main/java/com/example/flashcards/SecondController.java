@@ -5,12 +5,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Objects;
 import static com.example.flashcards.FirstController.countQ;
+import static com.example.flashcards.FirstController.nameF;
+import static com.example.flashcards.FirstController.col;
 
 /**
  * tretretre
@@ -105,42 +106,12 @@ public class SecondController {
 
     @FXML
     private ProgressBar pBar;
-    Questions[] questions = new Questions[]{
-            new Questions("матрица", "прямоугольная таблица размером m x n\nсодержащая m строк и n столбцов"),
-            new Questions("матрица-строка (вектор-строка)", "матрица, содержащая одну строку"),
-            new Questions("матрица-столбец (вектор-столбец)", "матрица, содержащая один столбец"),
-            new Questions("квадратная матрица", "матрица, число строк которой равно\nчислу столбцов, т.е. m=n"),
-            new Questions("транспонированная матрица", "матрица, получившаяся в результате\nперестановки каждой строки некой матрицы\nв столбцы этой матрицы в том же порядке"),
-            new Questions("минор", "определитель aij порядка n−1 матрицы An,\nполученный из определителя этой же\nматрицы после вычеркивания в ней\ni-той строки и j-ого столбца"),
-            new Questions("алгебраическое дополнение матрицы", "число Aij=(−1)^(i+j) * Mij,\nгде Mij — дополнительный минор"),
-            new Questions("обратная матрица", "это матрица A^(-1), если выполняется\nравенство A^(-1)A = AA^(-1) = E,\nгде E – единичная матрица"),
-            new Questions("вырожденная матрица", "матрица, определитель которой\nравен нулю"),
-            new Questions("невырожденная матрица", "матрица, определитель которой\nотличен от нуля"),
-            new Questions("способы построения обратной матрицы", "метод Гауса и матричный метод "),
-            new Questions("вектор", "класс эквивалентных друг другу\nнаправленных отрезков"),
-            new Questions("длина (модуль) вектора AB", "неотрицательное число равное длине\nотрезка |AB|"),
-            new Questions("нулевой вектор", "вектор, длина которого равна нулю,\nа направление не определено (произвольно)"),
-            new Questions("коллинеарные векторы", "ненулевые векторы, лежащие на одной\nпрямой или на параллельных прямых"),
-            new Questions("компланарные векторы", "векторы параллельные одной плоскости"),
-            new Questions("некомпланарные векторы", "векторы, не являющиеся параллельными\nодной плоскости"),
-            new Questions("базис", "система из трех ненулевых\nнекомпланарных векторов"),
-            new Questions("виды систем координат на плоскости", "декартова и полярная "),
-            new Questions("виды произведений векторов", "скалярное, векторное и смешанное"),
-            new Questions("напраляющий вектор прямой","любой ненулевой вектор, коллинеарный\nданной прямой"),
-            new Questions("ортогональные веторы", "векторы, скалярное произведение которых\nравно 0"),
-            new Questions("ортонормированный базис","базис, составленный из попарно\nортогональных векторов при условии\nединичности нормы всех этих вектором"),
-            new Questions("ортогональный базис","базис, составленный из попарно\nортогональных векторов"),
-            new Questions("эллипс", "множество точек плоскости, для каждой\nиз которых сумма расстояний до двух\nданных точек есть величина постоянная"),
-            new Questions("гипербола", "множество точек плоскости, модуль\nразности расстояний от каждой из которых\nдо двух данных точек есть величина постоянная"),
-            new Questions("парабола","геометрическое место точек плоскости,\nкаждая из которых равноудалена от\nданной точки"),
-            new Questions("линейно независимая система векторов","линейная комбинация векторов равна\nнулевому вектору когда все коэффициенты\nлинейной комбинации равны нулю"),
-            new Questions("линейно зависимая система векторов","если существуют такие действительные\nчисла α1,α2,…,αn, хотя бы одно из\nкоторых не равно нулю, такие,\nчто их линейная комбинация равна\nнулевому вектору"),
-            new Questions("линейная комбинация n векторов","вектор вида: α1a¯1+α2a¯2+…+αna¯n,\nгде α1,α2,…,αn– некоторые действительные числа,\nназываемые коэффициентами линейной комбинации")
-    };
+
+    ArrayList<Questions> questions = new ArrayList<>();
 
     ArrayList<String> varMas = new ArrayList<>();
     private int num = countQ;
-    private int length = 30;
+    private int length = col;
     private int badStat = 0;
     private int rightStat = 0;
     private int varStatF = 0;
@@ -159,10 +130,10 @@ public class SecondController {
         isTina = n;
         for (int i = 1; i < masN.length; i++) {
             j = 0;
-            n = random.nextInt(30);
+            n = random.nextInt(col);
             while (j < i) {
                 if (masN[j] == n) {
-                    n = random.nextInt(30);
+                    n = random.nextInt(col);
                     j = 0;
                 } else {
                     j++;
@@ -173,14 +144,15 @@ public class SecondController {
         putPrVAnswer(masN);
         String[] variantMas = new String[4];
         for (int ch = 0; ch < variantMas.length; ch++) {
-            variantMas[ch] = questions[masN[ch]].getAnswer();
+            variantMas[ch] = questions.get(masN[ch]).getAnswer();
         }
         radio1.setText(variantMas[0]);
         radio2.setText(variantMas[1]);
         radio3.setText(variantMas[2]);
         radio4.setText(variantMas[3]);
-        lblQ.setText(questions[isTina].getQuestion());
-        lblA.setText(questions[isTina].getAnswer());
+        lblQ.setText(questions.get(isTina).getQuestion());
+        lblA.setText(questions.get(isTina).getAnswer());
+        System.out.println(isTina);
     }
 
     void putPrVAnswer(int[] massive) {
@@ -195,11 +167,31 @@ public class SecondController {
         }
     }
 
+    ArrayList<Questions> readFile(){
+        String str1;
+        String str2;
+        ArrayList<Questions> questionsFile = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(nameF));
+            while((str1 = reader.readLine()) != null && (str2 = reader.readLine()) != null){
+                str2 = str2.replaceAll("[&]", "\n");
+                questionsFile.add(new Questions(str1, str2));
+            }
+        } catch (Exception e){
+            lblQ.setText("error file");
+        }
+        return questionsFile;
+    }
+
     void peRest() {
-        Questions x;
-        x = questions[isTina];
-        questions[isTina] = questions[length - 1];
-        questions[length - 1] = x;
+        String x = questions.get(isTina).getQuestion();
+        String y = questions.get(isTina).getAnswer();
+        String x2 = questions.get(length).getQuestion();
+        String y2 = questions.get(length).getAnswer();
+        questions.get(length).setQuestion(x);
+        questions.get(length).setAnswer(y);
+        questions.get(isTina).setQuestion(x2);
+        questions.get(isTina).setAnswer(y2);
     }
 
     public static boolean isBetween(int x, int lower, int upper) {
@@ -221,10 +213,10 @@ public class SecondController {
         } else {
             wrongQ.setText("В процессе вы выучили следующие термины:\n");
             String pred;
-            for (int i = 0; i < 30; i++) {
-                if (!questions[i].isChosen()) {
+            for (int i = 0; i < col; i++) {
+                if (!questions.get(i).isChosen()) {
                     pred = wrongQ.getText();
-                    wrongQ.setText(pred + questions[i].getQuestion() + "\n");
+                    wrongQ.setText(pred + questions.get(i).getQuestion() + "\n");
                 }
             }
         }
@@ -246,6 +238,9 @@ public class SecondController {
      * @param isVarR sgervd
      */
     void doLblY(boolean isVarR){
+        for(Questions q : questions){
+            System.out.println(q.getQuestion() + "\n\t" + q.getAnswer());
+        }
         lblY.setOnMousePressed(event -> {
             peRest();
             num--;
@@ -293,11 +288,12 @@ public class SecondController {
      */
     void doLblN(boolean isVarR){
         lblN.setOnMousePressed(event -> {
-            if (questions[isTina].isChosen()) {
-                questions[isTina].setChosen(false);
+            if (questions.get(isTina).isChosen()) {
+                questions.get(isTina).setChosen(false);
                 badStat++;
                 dontKnow.setText(String.valueOf(badStat));
             }
+            length++;
             rand();
             sep.setVisible(false);
             lblShow.setVisible(true);
@@ -315,9 +311,9 @@ public class SecondController {
         RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
         if (selectedRadio != null) {
             String toggleGroupValue = selectedRadio.getText();
-            if (!Objects.equals(toggleGroupValue, lblA.getText()) && questions[isTina].isChosen()) {
-                varMas.add(questions[isTina].getQuestion());
-                varMas.add(questions[isTina].getAnswer());
+            if (!Objects.equals(toggleGroupValue, lblA.getText()) && questions.get(isTina).isChosen()) {
+                varMas.add(questions.get(isTina).getQuestion());
+                varMas.add(questions.get(isTina).getAnswer());
                 varStatF++;
                 varKnow.setText(String.valueOf(varStatF));
             }
@@ -385,10 +381,10 @@ public class SecondController {
                 else {
                     fw.write("В процессе вы выучили следующие термины:\n");
                     for (int g = 0; g < 30; g++) {
-                        if (!questions[g].isChosen()) {
-                            fw.write("*" + questions[g].getQuestion() + "\n");
+                        if (!questions.get(g).isChosen()) {
+                            fw.write("*" + questions.get(g).getQuestion() + "\n");
                             g++;
-                            fw.write("\tОтвет: " + questions[g].getAnswer().replaceAll("[\n]", " ") + "\n");
+                            fw.write("\tОтвет: " + questions.get(g).getAnswer().replaceAll("[\n]", " ") + "\n");
                             g++;
                         }
                     }
@@ -461,7 +457,7 @@ public class SecondController {
 
     @FXML
     void hideAOnEntered() {
-        labelHideA.setText("Ответ: " + questions[isTina].getAnswer());
+        labelHideA.setText("Ответ: " + questions.get(isTina).getAnswer());
     }
 
     @FXML
@@ -471,6 +467,10 @@ public class SecondController {
 
     @FXML
     void initialize() {
+        questions = readFile();
+        for(Questions q : questions){
+            System.out.println(q.getQuestion() + "\n\t" + q.getAnswer());
+        }
         rand();
         creatFile.setVisible(false);
         creatFile.setStyle("-fx-focus-traversable: false");

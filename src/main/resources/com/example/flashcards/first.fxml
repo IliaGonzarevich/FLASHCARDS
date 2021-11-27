@@ -7,7 +7,6 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flashcards.FirstController">
     <Rectangle arcHeight="5.0" arcWidth="5.0" height="557.0" layoutY="-5.0" stroke="#090000" strokeType="INSIDE" strokeWidth="0.0" width="350.0">
         <fill>
@@ -32,7 +31,7 @@
             </LinearGradient>
         </fill>
     </Rectangle>
-    <Button alignment="CENTER" layoutX="78.0" layoutY="370.0" mnemonicParsing="false" onAction="#showWindow" prefHeight="126.0" prefWidth="193.0" style="-fx-background-color: #fafafa;" text="Начать&#10;сессию&#10;" textAlignment="CENTER" textFill="#2300ad">
+    <Button alignment="CENTER" layoutX="78.0" layoutY="258.0" mnemonicParsing="false" onMousePressed="#showWindow" prefHeight="126.0" prefWidth="193.0" style="-fx-background-color: #fafafa;" text="Начать&#10;сессию&#10;" textAlignment="CENTER" textFill="#2300ad">
         <font>
             <Font name="Sitka Small Bold Italic" size="30.0" />
         </font></Button>
@@ -67,9 +66,15 @@
             </LinearGradient>
         </fill>
     </Text>
-    <Label layoutX="40.0" layoutY="235.0" text="Установить количество вопросов" />
-    <TextField fx:id="num" layoutX="241.0" layoutY="230.0" prefHeight="26.0" prefWidth="61.0" promptText="Max 30" />
-    <Label fx:id="errorNa" alignment="CENTER" layoutX="40.0" layoutY="256.0" prefHeight="44.0" prefWidth="262.0" textFill="RED" />
+    <Label layoutX="78.0" layoutY="458.0" text="Установить количество вопросов" />
+    <TextField fx:id="num" layoutX="78.0" layoutY="475.0" prefHeight="26.0" prefWidth="103.0" promptText="Max 4" />
+    <Label fx:id="errorNa" alignment="CENTER" layoutX="44.0" layoutY="389.0" prefHeight="68.0" prefWidth="262.0" textFill="RED" />
+   <Label layoutX="54.0" layoutY="165.0" prefHeight="18.0" prefWidth="131.0" text="Название репозитория" />
+   <TextField fx:id="pathName" layoutX="54.0" layoutY="183.0" prefHeight="26.0" prefWidth="194.0" promptText="по умолчанию in.txt выбран" />
+   <Button layoutX="250.0" layoutY="184.0" mnemonicParsing="false" onMousePressed="#check" prefHeight="25.0" prefWidth="52.0" text="Найти" />
+   <Label fx:id="chosenF" layoutX="54.0" layoutY="210.0" prefHeight="18.0" prefWidth="247.0" text="Выбранный файл: in.txt" />
+   <Button layoutX="185.0" layoutY="475.0" mnemonicParsing="false" onMousePressed="#setNum" text="Установить" />
+   <Label fx:id="colVop" layoutX="78.0" layoutY="501.0" prefHeight="18.0" prefWidth="185.0" text="Количество вопросов: 4" />
     <cursor>
         <Cursor fx:constant="DEFAULT" />
     </cursor>
