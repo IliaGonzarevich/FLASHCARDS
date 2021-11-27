@@ -31,27 +31,29 @@ public class FirstController {
 
     boolean isCorrect = true;
 
+    String styleText(String color){
+       return "-fx-text-fill: " + color;
+    }
+
     @FXML
     void check(){
-        errorNa.setStyle("-fx-text-fill: red");
+        errorNa.setStyle(styleText("red"));
         if(pathName.getLength() > 0){
             String fileName = pathName.getText();
             try {
                 if(fileName.endsWith(".txt")) {
                     BufferedReader reader = new BufferedReader(new FileReader(fileName));
-                    errorNa.setStyle("-fx-text-fill: green");
+                    errorNa.setStyle(styleText("green"));
                     errorNa.setText("Файл найден!");
                     chosenF.setText("Выбранный файл: " + fileName);
-                    col = 0;
                     try {
-                        while(reader.readLine() != null && reader.readLine() != null){
+                        while((reader.readLine()) != null && (reader.readLine()) != null){
                             col++;
                         }
                     } catch (Exception e){
                         errorNa.setText("Не удалось определить количество вопросов!");
                     }
                     if (col > 3) {
-                        System.out.println(col);
                         nameF = fileName;
                         num.setPromptText("Max " + col);
                         pathName.setText("");
@@ -59,7 +61,7 @@ public class FirstController {
                         colVop.setText("Количество вопросов " + col);
                         isCorrect = true;
                     } else {
-                        errorNa.setStyle("-fx-text-fill: red");
+                        errorNa.setStyle(styleText("red"));
                         errorNa.setText("Файл найден, но он лишком мал!\nМинимальное количество вопросов, которое\nможет содержать сессия - 4!");
                     }
                 }
@@ -93,12 +95,12 @@ public class FirstController {
         }
         if(isCorrect) {
             num.clear();
-            errorNa.setStyle("-fx-text-fill: green");
+            errorNa.setStyle(styleText("green"));
             errorNa.setText("Сессия сгенерированна! Можешь начинать!");
             colVop.setText("Количество вопросов " + countQ);
         }
         else{
-            errorNa.setStyle("-fx-text-fill: red");
+            errorNa.setStyle(styleText("red"));
             errorNa.setText("Некоректные данные!\nМаксимальное количество вопросов " + col);
         }
         isCorrect = true;

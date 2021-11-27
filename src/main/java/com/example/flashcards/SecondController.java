@@ -152,7 +152,6 @@ public class SecondController {
         radio4.setText(variantMas[3]);
         lblQ.setText(questions.get(isTina).getQuestion());
         lblA.setText(questions.get(isTina).getAnswer());
-        System.out.println(isTina);
     }
 
     void putPrVAnswer(int[] massive) {
@@ -238,9 +237,6 @@ public class SecondController {
      * @param isVarR sgervd
      */
     void doLblY(boolean isVarR){
-        for(Questions q : questions){
-            System.out.println(q.getQuestion() + "\n\t" + q.getAnswer());
-        }
         lblY.setOnMousePressed(event -> {
             peRest();
             num--;
@@ -281,7 +277,6 @@ public class SecondController {
             }
         });
     }
-
     /**
      * sjnvn
      * @param isVarR параметр
@@ -390,7 +385,7 @@ public class SecondController {
                     }
                 }
                 int h = 0;
-                if (varMas.size() == 0) {
+                if (varMas.isEmpty()) {
                     fw.write("Вы ответили верно на все вопросы с использованием вариантов ответа!");
                 } else {
                     fw.write("С использованием вариантов ответа вы ответили неверно на следующие вопросы:\n");
@@ -459,7 +454,6 @@ public class SecondController {
     void hideAOnEntered() {
         labelHideA.setText("Ответ: " + questions.get(isTina).getAnswer());
     }
-
     @FXML
     void hideAOnExited() {
         labelHideA.setText("Наведи, чтобы увидеть часть ответа");
@@ -467,20 +461,18 @@ public class SecondController {
 
     @FXML
     void initialize() {
+        String traverF = "-fx-focus-traversable: false";
         questions = readFile();
-        for(Questions q : questions){
-            System.out.println(q.getQuestion() + "\n\t" + q.getAnswer());
-        }
         rand();
         creatFile.setVisible(false);
-        creatFile.setStyle("-fx-focus-traversable: false");
-        fileButton.setStyle("-fx-focus-traversable: false");
+        creatFile.setStyle(traverF);
+        fileButton.setStyle(traverF);
         textField.setVisible(false);
-        textField.setStyle("-fx-focus-traversable: false");
+        textField.setStyle(traverF);
         wrongVarQ.setVisible(false);
-        wrongVarQ.setStyle("-fx-focus-traversable: false");
+        wrongVarQ.setStyle(traverF);
         wrongQ.setVisible(false);//добавил
-        wrongQ.setStyle("-fx-focus-traversable: false");
+        wrongQ.setStyle(traverF);
         resultAnchorPane.setVisible(false);
         radioVertical.setVisible(false);
         lblShow2.setVisible(false);
