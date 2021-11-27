@@ -250,7 +250,7 @@ public class SecondController {
             learn.setText("Вы выучили " + rightStat + conclusion);
 
             if (num == 0) {
-                resultTitle.setText("Из " + countQ + " терминов ты...");
+                resultTitle.setText("из " + countQ + " терминов ты...");
                 hideVB.setVisible(false);
                 hideTop.setVisible(false);
                 hideBottom.setVisible(false);
