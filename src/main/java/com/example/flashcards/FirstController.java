@@ -54,37 +54,45 @@ public class FirstController {
                 while(reader.readLine() != null){
                     col++;
                 }
-                if((col%2) == 0) {
-                    col /= 2;
-                    if (fileName.endsWith(".txt") && col > 3) {
-                        countQ = col;
-                        errorNa.setStyle(styleText("green"));
-                        errorNa.setText("Файл найден!");
-                        chosenF.setText("Выбранный файл: " + fileName);
-                        nameF = fileName;
-                        num.setPromptText("Max " + col);
-                        pathName.setText("");
-                        pathName.setPromptText(fileName + " выбран");
-                        colVop.setText("Количество вопросов " + col);
-                        isCorrect = true;
-                    } else if (fileName.endsWith(".txt") && col <= 3) {
-                        col = 30;
-                        errorNa.setStyle(styleText("red"));
-                        errorNa.setText("Файл найден, но он лишком мал!\nМинимальное количество вопросов, которое\nможет содержать сессия - 4!");
-                    } else {
-                        col = 30;
-                        errorNa.setText("Некорректный ввод!");
-                        isCorrect = false;
-                    }
-                } else {
-                    errorNa.setText("Не у всех вопросов есть ответы!\nОтредактируйте файл!");
-                }
+               fileEnds(fileName);
             } catch (FileNotFoundException fnf){
                 errorNa.setText("Файл не найден!");
                 isCorrect = false;
             } catch (IOException e){
                 errorNa.setText("Не удалось определить количество вопросов!");
             }
+        }
+    }
+
+    /**
+     * helper so that the method is not overloaded
+     * @param name is filename
+     */
+    void fileEnds(String name){
+        if((col%2) == 0) {
+            col /= 2;
+            if (name.endsWith(".txt") && col > 3) {
+                countQ = col;
+                errorNa.setStyle(styleText("green"));
+                errorNa.setText("Файл найден!");
+                chosenF.setText("Выбранный файл: " + name);
+                nameF = name;
+                num.setPromptText("Max " + col);
+                pathName.setText("");
+                pathName.setPromptText(name + " выбран");
+                colVop.setText("Количество вопросов " + col);
+                isCorrect = true;
+            } else if (name.endsWith(".txt") && col <= 3) {
+                col = 30;
+                errorNa.setStyle(styleText("red"));
+                errorNa.setText("Файл найден, но он лишком мал!\nМинимальное количество вопросов, которое\nможет содержать сессия - 4!");
+            } else {
+                col = 30;
+                errorNa.setText("Некорректный ввод!");
+                isCorrect = false;
+            }
+        } else {
+            errorNa.setText("Не у всех вопросов есть ответы!\nОтредактируйте файл!");
         }
     }
 
