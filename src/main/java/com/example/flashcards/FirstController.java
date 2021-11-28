@@ -51,7 +51,9 @@ public class FirstController {
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(fileName));
                 col = 0;
-                while(reader.readLine() != null){
+                String str = reader.readLine();
+                while(str != null){
+                    str = reader.readLine();
                     col++;
                 }
                fileEnds(fileName);
