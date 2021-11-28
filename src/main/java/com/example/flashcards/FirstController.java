@@ -8,6 +8,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+/**
+ * controls all actions that occur in the main (menu) window
+ */
 public class FirstController {
 
     public static String nameF = "in.txt";
@@ -35,6 +38,9 @@ public class FirstController {
        return "-fx-text-fill: " + color;
     }
 
+    /**
+     * checks the existence of this file
+     */
     @FXML
     void check(){
         num.setText("");
@@ -78,6 +84,10 @@ public class FirstController {
         }
     }
 
+    /**
+     * creates the second window
+     * @throws Exception is an exception in case the second window can not be created
+     */
     @FXML
     protected void showWindow() throws Exception {
         pathName.setText("");
@@ -85,6 +95,9 @@ public class FirstController {
         second.showWindow();
     }
 
+    /**
+     * processes the data entered by the user and configures the first window for them
+     */
     @FXML
     void setNum(){
         if(num.getLength() > 0) {

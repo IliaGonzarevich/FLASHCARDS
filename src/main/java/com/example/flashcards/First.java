@@ -10,8 +10,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * processes and creates the first window
+ */
 public class First extends Application {
 
+    /**
+     * starts the processing of first window
+     * @param stage is window that is sent for processing
+     * @throws IOException is an exception in case the first window cannot be created
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(First.class.getResource("first.fxml"));
@@ -26,10 +34,18 @@ public class First extends Application {
         stage.show();
     }
 
+    /**
+     * the beginning of the beginning
+     * @param args is something sacred
+     */
     public static void main(String[] args) {
         launch();
     }
 
+    /**
+     * creates processes modular confirmation window events
+     * @param stage is the prepared window that is sent for processing
+     */
     public void closeProgram(Stage stage){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation DialogBox");

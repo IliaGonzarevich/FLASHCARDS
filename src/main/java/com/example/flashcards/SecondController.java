@@ -14,7 +14,7 @@ import static com.example.flashcards.FirstController.nameF;
 import static com.example.flashcards.FirstController.col;
 
 /**
- * tretretre
+ * controls all actions that occur in the card window (sessions)
  */
 public class SecondController {
 
@@ -120,6 +120,9 @@ public class SecondController {
     int[] masN;
     SecureRandom random = new SecureRandom();
 
+    /**
+     * generates the correct answer option and 3 more that will be set to radio buttons
+     */
     void rand() {
         masN = new int[4];
         int j;
@@ -154,6 +157,10 @@ public class SecondController {
         lblA.setText(questions.get(isTina).getAnswer());
     }
 
+    /**
+     * takes an array of answer options under their indexes in the array and shuffles them
+     * @param massive of answer options under their indexes
+     */
     void putPrVAnswer(int[] massive) {
         int num1 = 0;
         int obMen;
@@ -166,6 +173,10 @@ public class SecondController {
         }
     }
 
+    /**
+     * processes the file that was suggested by the user and returns it as an ArrayList
+     * @return an ArrayList with questions and answers to them
+     */
     ArrayList<Questions> readFile(){
         String str1;
         String str2;
@@ -182,6 +193,9 @@ public class SecondController {
         return questionsFile;
     }
 
+    /**
+     * rearranges the correct option to the end of the sheet, and its last element moves to its place
+     */
     void peRest() {
         String x = questions.get(isTina).getQuestion();
         String y = questions.get(isTina).getAnswer();
@@ -193,10 +207,20 @@ public class SecondController {
         questions.get(isTina).setAnswer(y2);
     }
 
+    /**
+     * a function for determining the boundaries of a number
+     * @param x is value of the number
+     * @param lower is lower bound of the range
+     * @param upper is upper bound of the range
+     * @return the answer is whether this x really belongs to a specific range
+     */
     public static boolean isBetween(int x, int lower, int upper) {
         return lower <= x && x <= upper;
     }
 
+    /**
+     * processes clicking on the "Show answer" button
+     */
     void doLblShow(){
         lblShow.setOnMousePressed(show -> {
             sep.setVisible(true);
@@ -206,6 +230,9 @@ public class SecondController {
         });
     }
 
+    /**
+     * displays statistics on learned words and words that the user has forgotten from previous sessions in the results window.
+     */
     void queViVod(){
         if(badStat == 0) {
             wrongQ.setText("Вы ответили верно на все вопросы!\nПоздравляем!");
@@ -233,8 +260,8 @@ public class SecondController {
     }
 
     /**
-     * vtnjl ngtjq
-     * @param isVarR sgervd
+     * processes clicking on the "I know this term, skip" button
+     * @param isVarR is responsible for output of the results window and changes to the status of the "Show answer options" button
      */
     void doLblY(boolean isVarR){
         lblY.setOnMousePressed(event -> {
@@ -248,7 +275,6 @@ public class SecondController {
                 conclusion = " терминов";
             } else conclusion = " термин";
             learn.setText("Вы выучили " + rightStat + conclusion);
-
             if (num == 0) {
                 resultTitle.setText("из " + countQ + " терминов ты...");
                 hideVB.setVisible(false);
@@ -278,8 +304,8 @@ public class SecondController {
         });
     }
     /**
-     * sjnvn
-     * @param isVarR параметр
+     * processes clicking on the "I do not know this term, study" button
+     * @param isVarR changes to the status of the "Show answer options" button
      */
     void doLblN(boolean isVarR){
         lblN.setOnMousePressed(event -> {
@@ -301,6 +327,10 @@ public class SecondController {
             }
         });
     }
+
+    /**
+     * processes the "Show Answer" button, which is responsible for the answer options
+     */
     @FXML
     void show2Pressed(){
         RadioButton selectedRadio = (RadioButton) radioGroup.getSelectedToggle();
@@ -322,6 +352,10 @@ public class SecondController {
             selectedRadio.setSelected(false);
         }
     }
+
+    /**
+     * processes the "Add answer options" button, which is responsible for their appearance or disappearance
+     */
     @FXML
     void variantPressed(){
         isVar = true;
@@ -347,6 +381,10 @@ public class SecondController {
             selectedRadio.setSelected(false);
         }
     }
+
+    /**
+     * processes clicking on the "Create Report" button
+     */
     @FXML
     void textShow(){
         errorLbl.setText("");
@@ -361,6 +399,11 @@ public class SecondController {
             creatFile.setVisible(true);
         }
     }
+
+    /**
+     * creates a report
+     * @throws IOException is an exception in case the file cannot be created
+     */
     @FXML
     void creatFile() throws IOException {
         FileWriter fw = null;
@@ -406,59 +449,102 @@ public class SecondController {
         }
         textField.setText("");
     }
+
+    /**
+     * the statistics window shows incorrect answers
+     */
     @FXML
     void showWrongQ(){
         wrongQ.setVisible(true);
     }
 
+    /**
+     * the statistics window hides incorrect answers
+     */
     @FXML
     void hideWrongQ(){
        wrongQ.setVisible(false);
     }
 
+    /**
+     * the statistics window shows incorrect variant answers
+     */
     @FXML
     void showWrongVarQ(){
         wrongVarQ.setVisible(true);
     }
 
+    /**
+     * the statistics window hides incorrect variant answers
+     */
     @FXML
     void hideWrongVarQ(){
         wrongVarQ.setVisible(false);
     }
 
+    /**
+     * change the style of the Label
+     * @param lbl is processing Label
+     * @param clr is his color
+     * @param bckRad is his background radius
+     * @param brad is his border radius
+     * @param bWth is his border width
+     */
     void changeBackground(Label lbl, String clr, String bckRad, String brad, String bWth) {
         lbl.setStyle("-fx-background-color: " + clr + "; -fx-background-radius: 0 0 " + bckRad + "; -fx-border-radius: 0 0 " + brad + "; -fx-border-color: grey; -fx-border-width: 1 1 1 " + bWth + ";");
     }
 
+    /**
+     * the glow of the "I know this term, skip" button when hovering over it
+     */
     @FXML
     void lblYOnEntered() {
         changeBackground(lblY, "green", "0 20", "0 20", "1");
     }
 
+    /**
+     * fading of the "I know this term, skip" button when hovering over it
+     */
     @FXML
     void lblYOnExited() {
         changeBackground(lblY, "white", "0 20", "0 20", "1");
     }
 
+    /**
+     * the glow of the "I do not know this term, study" button when hovering over it
+     */
     @FXML
     void lblNOnEntered() {
         changeBackground(lblN, "grey", "20 0", "20 0", "0");
     }
 
+    /**
+     * fading of the "I do not know this term, study" button when hovering over it
+     */
     @FXML
     void lblNOnExited() {
         changeBackground(lblN, "white", "20 0", "20 0", "0");
     }
 
+    /**
+     * shows part of the correct answer to this question
+     */
     @FXML
     void hideAOnEntered() {
         labelHideA.setText("Ответ: " + questions.get(isTina).getAnswer());
     }
+
+    /**
+     * hides part of the correct answer to this question
+     */
     @FXML
     void hideAOnExited() {
         labelHideA.setText("Наведи, чтобы увидеть часть ответа");
     }
 
+    /**
+     * the method from which everything starts
+     */
     @FXML
     void initialize() {
         String traverF = "-fx-focus-traversable: false";
