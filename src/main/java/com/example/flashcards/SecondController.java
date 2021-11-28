@@ -418,28 +418,13 @@ public class SecondController {
                 }
                 else {
                     fw.write("В процессе вы выучили следующие термины:\n");
-                    int g = 0;
-                    while(g < col) {
-                        if (!questions.get(g).isChosen()) {
-                            fw.write("*" + questions.get(g).getQuestion() + "\n");
-                            g++;
-                            fw.write("\tОтвет: " + questions.get(g).getAnswer().replaceAll("[\n]", " ") + "\n");
-                            g++;
-                        }
-                        g++;
-                    }
+                    studiedHelp(fw);
                 }
                 if (varMas.isEmpty()) {
                     fw.write("Вы ответили верно на все вопросы с использованием вариантов ответа!");
                 } else {
                     fw.write("С использованием вариантов ответа вы ответили неверно на следующие вопросы:\n");
-                    int h = 0;
-                    while (h < varMas.size()) {
-                        fw.write("*" + varMas.get(h) + "\n");
-                        h++;
-                        fw.write("\tОтвет: " + varMas.get(h).replaceAll("[\n]", " ") + "\n");
-                        h++;
-                    }
+                    badVariant(fw);
                 }
             } catch (IOException e) {
                 errorLbl.setText("Ошибка: " + e);
@@ -450,6 +435,39 @@ public class SecondController {
             errorLbl.setText("Название файла не корректно!\nПроверьте наличие .txt в конце.");
         }
         textField.setText("");
+    }
+
+    /**
+     * helper for creatFile method
+     * @param fwr is fw in code
+     * @throws IOException for write
+     */
+    void studiedHelp(FileWriter fwr) throws IOException {
+        int g = 0;
+        while(g < col) {
+            if (!questions.get(g).isChosen()) {
+                fwr.write("*" + questions.get(g).getQuestion() + "\n");
+                g++;
+                fwr.write("\tОтвет: " + questions.get(g).getAnswer().replaceAll("[\n]", " ") + "\n");
+                g++;
+            }
+            g++;
+        }
+    }
+
+    /**
+     * helper for creatFile method
+     * @param fwt is fw in code
+     * @throws IOException for write
+     */
+    void badVariant(FileWriter fwt) throws IOException {
+        int h = 0;
+        while (h < varMas.size()) {
+            fwt.write("*" + varMas.get(h) + "\n");
+            h++;
+            fwt.write("\tОтвет: " + varMas.get(h).replaceAll("[\n]", " ") + "\n");
+            h++;
+        }
     }
 
     /**
