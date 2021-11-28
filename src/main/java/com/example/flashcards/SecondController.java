@@ -418,20 +418,22 @@ public class SecondController {
                 }
                 else {
                     fw.write("В процессе вы выучили следующие термины:\n");
-                    for (int g = 0; g < col; g++) {
+                    int g = 0;
+                    while(g < col) {
                         if (!questions.get(g).isChosen()) {
                             fw.write("*" + questions.get(g).getQuestion() + "\n");
                             g++;
                             fw.write("\tОтвет: " + questions.get(g).getAnswer().replaceAll("[\n]", " ") + "\n");
                             g++;
                         }
+                        g++;
                     }
                 }
-                int h = 0;
                 if (varMas.isEmpty()) {
                     fw.write("Вы ответили верно на все вопросы с использованием вариантов ответа!");
                 } else {
                     fw.write("С использованием вариантов ответа вы ответили неверно на следующие вопросы:\n");
+                    int h = 0;
                     while (h < varMas.size()) {
                         fw.write("*" + varMas.get(h) + "\n");
                         h++;
