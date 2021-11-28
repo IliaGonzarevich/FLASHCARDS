@@ -54,11 +54,8 @@ public class FirstController {
                 while(reader.readLine() != null){
                     col++;
                 }
-                System.out.println(col);
-                System.out.println(col%2);
                 if((col%2) == 0) {
                     col /= 2;
-                    System.out.println(col);
                     if (fileName.endsWith(".txt") && col > 3) {
                         countQ = col;
                         errorNa.setStyle(styleText("green"));
