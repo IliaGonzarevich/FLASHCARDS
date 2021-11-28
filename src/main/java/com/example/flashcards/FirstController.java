@@ -48,32 +48,32 @@ public class FirstController {
         if(pathName.getLength() > 0){
             String fileName = pathName.getText();
             try {
-                if(fileName.endsWith(".txt")) {
-                    BufferedReader reader = new BufferedReader(new FileReader(fileName));
+                BufferedReader reader = new BufferedReader(new FileReader(fileName));
+                try {
+                    col = 0;
+                    while((reader.readLine()) != null && (reader.readLine()) != null){
+                        col++;
+                    }
+                } catch (Exception e){
+                    errorNa.setText("Не удалось определить количество вопросов!");
+                }
+                if(fileName.endsWith(".txt") && col > 3) {
+                    countQ = col;
                     errorNa.setStyle(styleText("green"));
                     errorNa.setText("Файл найден!");
                     chosenF.setText("Выбранный файл: " + fileName);
-                    try {
-                        col = 0;
-                        while((reader.readLine()) != null && (reader.readLine()) != null){
-                            col++;
-                        }
-                    } catch (Exception e){
-                        errorNa.setText("Не удалось определить количество вопросов!");
-                    }
-                    if (col > 3) {
-                        nameF = fileName;
-                        num.setPromptText("Max " + col);
-                        pathName.setText("");
-                        pathName.setPromptText(fileName + " выбран");
-                        colVop.setText("Количество вопросов " + col);
-                        isCorrect = true;
-                    } else {
-                        errorNa.setStyle(styleText("red"));
-                        errorNa.setText("Файл найден, но он лишком мал!\nМинимальное количество вопросов, которое\nможет содержать сессия - 4!");
-                    }
-                }
-                else {
+                    nameF = fileName;
+                    num.setPromptText("Max " + col);
+                    pathName.setText("");
+                    pathName.setPromptText(fileName + " выбран");
+                    colVop.setText("Количество вопросов " + col);
+                    isCorrect = true;
+                } else if (fileName.endsWith(".txt") && col <= 3){
+                    col = 30;
+                    errorNa.setStyle(styleText("red"));
+                    errorNa.setText("Файл найден, но он лишком мал!\nМинимальное количество вопросов, которое\nможет содержать сессия - 4!");
+                } else {
+                    col = 30;
                     errorNa.setText("Некорректный ввод!");
                     isCorrect = false;
                 }
@@ -90,9 +90,11 @@ public class FirstController {
      */
     @FXML
     protected void showWindow() throws Exception {
-        pathName.setText("");
-        Second second = new Second();
-        second.showWindow();
+        if(isCorrect){
+            pathName.setText("");
+            Second second = new Second();
+            second.showWindow();
+        } else errorNa.setText("Некоректные данные!");
     }
 
     /**
@@ -116,8 +118,7 @@ public class FirstController {
         }
         else{
             errorNa.setStyle(styleText("red"));
-            errorNa.setText("Некоректные данные!\nМаксимальное количество вопросов " + col);
+            errorNa.setText("Некоректные данные!\nМаксимальное количество вопросов " + col +"\n" + "Минимальное количество вопросов 4!");
         }
-        isCorrect = true;
     }
 }

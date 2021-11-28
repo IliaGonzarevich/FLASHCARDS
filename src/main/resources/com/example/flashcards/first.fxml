@@ -70,7 +70,7 @@
     <TextField fx:id="num" layoutX="78.0" layoutY="475.0" prefHeight="26.0" prefWidth="103.0" promptText="Max 30" />
     <Label fx:id="errorNa" alignment="CENTER" layoutX="44.0" layoutY="389.0" prefHeight="68.0" prefWidth="262.0" textFill="RED" />
    <Label layoutX="54.0" layoutY="165.0" prefHeight="18.0" prefWidth="131.0" text="Название репозитория" />
-   <TextField fx:id="pathName" layoutX="54.0" layoutY="183.0" prefHeight="26.0" prefWidth="194.0" promptText="по умолчанию in.txt выбран" />
+   <TextField fx:id="pathName" layoutX="54.0" layoutY="183.0" prefHeight="26.0" prefWidth="194.0" promptText="по умолчанию in.txt" />
    <Button layoutX="250.0" layoutY="184.0" mnemonicParsing="false" onMousePressed="#check" prefHeight="25.0" prefWidth="52.0" text="Найти" />
    <Label fx:id="chosenF" layoutX="54.0" layoutY="210.0" prefHeight="18.0" prefWidth="247.0" text="Выбранный файл: in.txt" />
    <Button layoutX="185.0" layoutY="475.0" mnemonicParsing="false" onMousePressed="#setNum" text="Установить" />
