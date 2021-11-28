@@ -40,7 +40,7 @@ public class FirstController {
     }
 
     /**
-     * checks the existence of this file
+     * checks the existence of the file
      */
     @FXML
     void check(){
